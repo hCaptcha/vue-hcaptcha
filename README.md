@@ -62,7 +62,7 @@ Sign up at [hCaptcha](https://wwww.hcaptcha.com) to get your sitekey today. Chec
 
 ### Demo
 
-![Demo](screenshots/demo.gif)
+![Demo](https://raw.githubusercontent.com/hCaptcha/vue-hcaptcha/master/screenshots/demo.gif)
 
 To run the demo, simply ```npm run serve``` after downloading the repo, this will start a development server on localhost:8080. Open your console to see the demo app emitting events.
 
