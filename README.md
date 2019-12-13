@@ -18,7 +18,7 @@ or by including the library in a script tag
 <template>
     <vue-hcaptcha sitekey="**Your sitekey here**"></vue-hcaptcha>
 </template>
- 
+
 <script>
   import VueHcaptcha from 'vue-hcaptcha';
   export default {
@@ -73,3 +73,11 @@ To test locally, you can run the following NPM commands:
     - This will build your version of the component with your customizations for production.
 - ```npm run lint``` and ```npm run lint:fix```
     - This will enable ESLint to help keep your code clean!
+
+## Publishing npm package
+Using the proper credentials (granted to @Hcaptcha org), you'll need to do the following to publish:
+
+- `npm login`
+- Bump version in package.json
+- Commit changes
+- `npm publish .`

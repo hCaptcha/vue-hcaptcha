@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "./src/main.js",
   "author": "Ali Neer",
   "organization": "hCaptcha",
