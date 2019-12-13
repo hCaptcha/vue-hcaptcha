@@ -1,0 +1,94 @@
+{
+  "name": "@hcaptcha/vue-hcaptcha",
+  "version": "0.1.2",
+  "main": "./src/main.js",
+  "author": "Ali Neer",
+  "organization": "hCaptcha",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-cli": "^2.9.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/preset-env": "^7.0.0",
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-jest": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.27",
+    "@yonyou-cloud/eslint-config": "0.0.1",
+    "autoprefixer": "^9.1.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^23.6.0",
+    "jest-vue-preprocessor": "^1.4.0",
+    "jsdom": "^13.1.0",
+    "jsdom-global": "^3.0.2",
+    "mini-css-extract-plugin": "^0.4.2",
+    "thread-loader": "^1.2.0",
+    "vue-jest": "^3.0.2",
+    "vue-loader": "^15.4.2",
+    "vue-server-renderer": "^2.5.21",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.28.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
+  },
+  "keywords": [
+    "hcaptcha", "captcha", "component", "vue", "vue-component", "earn"
+  ]
+}
