@@ -54,7 +54,7 @@ This is designed for ease of use with the hCaptcha API!
 
 #### How can I get a sitekey?
 
-Sign up at [hCaptcha](https://wwww.hcaptcha.com) to get your sitekey today. Check [documentation](https://docs.hcaptcha.com/api#getapikey) for more information.
+Sign up at [hCaptcha](https://www.hcaptcha.com) to get your sitekey today. Check [documentation](https://docs.hcaptcha.com/api#getapikey) for more information.
 
 #### What is hCaptcha?
 
