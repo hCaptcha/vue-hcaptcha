@@ -20,7 +20,7 @@ or by including the library in a script tag
 </template>
 
 <script>
-  import VueHcaptcha from 'vue-hcaptcha';
+  import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
   export default {
     ...
     components: { VueHcaptcha }
@@ -48,7 +48,7 @@ This is designed for ease of use with the hCaptcha API!
 
 - `@verify="onVerify"`
 - `@expired="onExpired"`
-- `@error=onError` (The captcha will automatically reset on error)
+- `@error="onError"` (The captcha will automatically reset on error)
 
 ### FAQ
 
