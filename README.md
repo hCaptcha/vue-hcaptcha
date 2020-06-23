@@ -74,7 +74,12 @@ To test locally, you can run the following NPM commands:
 - ```npm run lint``` and ```npm run lint:fix```
     - This will enable ESLint to help keep your code clean!
 
-## Publishing npm package
+### TypeScript
+
+Please see the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/44299) entry.
+
+
+### Note for maintainers: Publishing npm package
 Using the proper credentials (granted to @Hcaptcha org), you'll need to do the following to publish:
 
 - `npm login`
