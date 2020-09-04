@@ -21,9 +21,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-  "dependencies": {
-    "vue": "^2.6.12"
-  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
@@ -56,6 +53,7 @@
     "jsdom-global": "^3.0.2",
     "mini-css-extract-plugin": "^0.4.2",
     "thread-loader": "^1.2.0",
+    "vue": "^2.6.12",
     "vue-jest": "^3.0.2",
     "vue-loader": "^15.4.2",
     "vue-server-renderer": "^2.5.21",
