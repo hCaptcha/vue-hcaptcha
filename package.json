@@ -22,7 +22,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "2.6.11"
+    "vue": "^2.6.12"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -59,7 +59,7 @@
     "vue-jest": "^3.0.2",
     "vue-loader": "^15.4.2",
     "vue-server-renderer": "^2.5.21",
-    "vue-template-compiler": "2.6.11",
+    "vue-template-compiler": "^2.6.12",
     "webpack": "^4.28.1"
   },
   "eslintConfig": {
