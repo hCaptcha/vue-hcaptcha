@@ -4,12 +4,13 @@
   </div>
 </template>
 <script>
-const CaptchaScript = (cb, lang) => {
-    if(typeof lang === 'undefined') { // If not set, set english as default
-      lang = 'en';
+const CaptchaScript = (cb, choosenlang) => {
+    let lang = '';
+    if(typeof lang !== 'undefined') { // Set the selected language
+      lang = '&hl=' + choosenlang;
     }
     let script = document.createElement("script");
-    script.src = "https://hcaptcha.com/1/api.js?render=explicit&hl=" + lang;
+    script.src = "https://hcaptcha.com/1/api.js?render=explicit" + lang;
     script.async = true;
     
     script.addEventListener('load', cb, true);
