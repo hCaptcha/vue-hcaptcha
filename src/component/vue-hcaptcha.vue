@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-const CaptchaScript = (cb, choosenlang) => {
+const CaptchaScript = (cb, chosenlang) => {
     let script = document.createElement("script");
     script.async = true;
     script.src = "https://hcaptcha.com/1/api.js?render=explicit";
