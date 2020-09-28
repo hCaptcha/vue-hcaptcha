@@ -5,14 +5,14 @@
 </template>
 <script>
 const CaptchaScript = (cb, choosenlang) => {
-    let lang = '';
-    if(typeof lang !== 'undefined') { // Set the selected language
-      lang = '&hl=' + choosenlang;
-    }
     let script = document.createElement("script");
-    script.src = "https://hcaptcha.com/1/api.js?render=explicit" + lang;
     script.async = true;
-    
+    script.src = "https://hcaptcha.com/1/api.js?render=explicit";
+
+    if(typeof choosenlang !== 'undefined') {
+      script.src += `&hl=${choosenlang}`;
+    }
+
     script.addEventListener('load', cb, true);
 
     return script;
