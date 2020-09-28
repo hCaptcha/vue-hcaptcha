@@ -4,11 +4,15 @@
   </div>
 </template>
 <script>
-const CaptchaScript = (cb) => {
+const CaptchaScript = (cb, chosenlang) => {
     let script = document.createElement("script");
-    script.src = "https://hcaptcha.com/1/api.js?render=explicit";
     script.async = true;
-    
+    script.src = "https://hcaptcha.com/1/api.js?render=explicit";
+
+    if(typeof chosenlang !== 'undefined') {
+      script.src += `&hl=${chosenlang}`;
+    }
+
     script.addEventListener('load', cb, true);
 
     return script;
@@ -29,11 +33,14 @@ module.exports = {
         },
         tabindex: {
             type: String 
+        },
+        language: {
+            type: String
         }
     },
     mounted() {
         if (typeof window.hcaptcha === 'undefined') { //if not loaded, create script tag, and wait to render hcaptcha element
-            let script = CaptchaScript(this.onloadScript);
+            let script = CaptchaScript(this.onloadScript, this.language);
             let container = document.getElementById("hcap-script");
 
             if (document.getElementsByTagName('head').length > 0) {
