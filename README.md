@@ -50,6 +50,8 @@ This is designed for ease of use with the hCaptcha API!
 - `@verify="onVerify"`
 - `@expired="onExpired"`
 - `@error="onError"` (The captcha will automatically reset on error)
+- `@opened="onOpened"` 
+- `@closed="onClosed"` 
 
 ### FAQ
 
