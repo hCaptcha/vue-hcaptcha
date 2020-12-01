@@ -46,6 +46,14 @@ describe('VueHCaptcha', () => {
         expect(typeof VueHcaptcha.methods.onExpired).toBe('function')
     })
 
+    test('has onOpen function', () => {
+      expect(typeof VueHcaptcha.methods.onOpen).toBe('function')
+   })
+
+    test('has onClose function', () => {
+      expect(typeof VueHcaptcha.methods.onClose).toBe('function')
+    })
+
     test('has execute function', () => {
         expect(typeof VueHcaptcha.methods.execute).toBe('function')
     })
