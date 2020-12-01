@@ -63,7 +63,9 @@ module.exports = {
                 tabindex: this.tabindex ? this.tabindex : '',
                 callback: this.onVerify,
                 "expired-callback": this.onExpired,
-                "error-callback": this.onError
+                "error-callback": this.onError,
+                "open-callback": this.onOpen,
+                "close-callback": this.onClose
             }
             // Render hCaptcha widget and provide neccessary callbacks
             if (typeof window.hcaptcha !== 'undefined') {
@@ -92,6 +94,12 @@ module.exports = {
         },
         reset() {
             window.hcaptcha.reset(this.$widgetId);
+        },
+        onOpen() {
+            this.$emit('opened');
+        },
+        onClose() {
+            this.$emit('closed');
         }
     }
 }
