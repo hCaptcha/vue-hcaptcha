@@ -5,6 +5,8 @@
 </template>
 
 <script>
+const HCAPTCHA_SCRIPT_ID = 'hcaptcha-api';
+
 module.exports = {
     name: 'VueHcaptcha',
     props: {
@@ -31,24 +33,30 @@ module.exports = {
         };
     },
     mounted() {
-        this.loadHcaptchaIfNotPresent(this.onloadScript);
+        this.loadHcaptchaIfNotPresent();
     },
     methods: {
-        loadHcaptchaIfNotPresent(onLoadCb) {
+        loadHcaptchaIfNotPresent() {
             if (window.hcaptcha) {
-                onLoadCb();
-            } else {
-                // if hCaptcha is not present, load it, wait and render hcaptcha element
-                const script = this.getHcaptchaScript(onLoadCb, this.language);
-                let container = document.getElementById('hcap-script');
-                if (document.getElementsByTagName('head').length > 0) {
-                    container = document.getElementsByTagName('head')[0];
-                }
-                container.appendChild(script);  //append this here, this appends the tag to the start of the app.
+                return this.onloadScript();
             }
+            // Check if async script already present on dom
+            const hcaptchaApiScriptEl = document.getElementById(HCAPTCHA_SCRIPT_ID);
+            if (hcaptchaApiScriptEl) {
+                hcaptchaApiScriptEl.addEventListener('load', this.onloadScript, true);
+                return;
+            }
+            // Otherwise, inject api.js
+            const script = this.getHcaptchaScript(this.onloadScript, this.language);
+            let container = document.getElementById('hcap-script');
+            if (document.getElementsByTagName('head').length > 0) {
+                container = document.getElementsByTagName('head')[0];
+            }
+            container.appendChild(script);  //append this here, this appends the tag to the start of the app.
         },
         getHcaptchaScript(onLoadCb, chosenLang) {
             const script = document.createElement('script');
+            script.id = HCAPTCHA_SCRIPT_ID;
             script.async = true;
             script.src = `https://hcaptcha.com/1/api.js?render=explicit${chosenLang ? `&hl=${chosenLang}` : ''}`;
             script.addEventListener('load', onLoadCb, true);
