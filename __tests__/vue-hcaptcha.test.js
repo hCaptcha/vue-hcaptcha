@@ -131,7 +131,7 @@ describe('VueHCaptcha', () => {
         };
         getTestWrapper();
         const docHtml = document.documentElement.innerHTML;
-        expect(docHtml).not.toContain('"https://hcaptcha.com/1/api.js?render=explicit"');
+        expect(docHtml).not.toContain('https://hcaptcha.com/1/api.js?render=explicit');
         expect(window.hcaptcha.render.mock.calls.length).toBe(1);
     });
 
@@ -141,5 +141,16 @@ describe('VueHCaptcha', () => {
         getTestWrapper(false, true, "0000", language);
         const docHtml = document.documentElement.innerHTML;
         expect(docHtml).toContain(`https://hcaptcha.com/1/api.js?render=explicit&amp;hl=${language}`);
+    });
+
+    test('api.js is not loaded twice in case of many vue instances are loaded', () => {
+        window.hcaptcha = null;
+        const countInstances = 10;
+        for (let i = 0; i < countInstances; i++) {
+            getTestWrapper();
+        }
+        const docHtml = document.documentElement.innerHTML;
+        const countScripts = docHtml.split('https://hcaptcha.com/1/api.js?render=explicit').length - 1;
+        expect(countScripts).toBe(1);
     });
 });
