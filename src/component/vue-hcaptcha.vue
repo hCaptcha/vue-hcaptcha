@@ -10,7 +10,7 @@ const CaptchaScript = (cb, chosenlang) => {
     script.src = "https://hcaptcha.com/1/api.js?render=explicit";
 
     if(typeof chosenlang !== 'undefined') {
-      script.src += `&hl=${chosenlang}`;
+        script.src += `&hl=${chosenlang}`;
     }
 
     script.addEventListener('load', cb, true);
