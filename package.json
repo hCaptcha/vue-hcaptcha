@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "./src/main.js",
   "author": "hCaptcha team and contributors",
   "homepage": "https://github.com/hCaptcha/vue-hcaptcha",
@@ -22,6 +22,7 @@
     "build": "vue-cli-service build"
   },
   "devDependencies": {
+    "@actions/core": "^1.2.6",
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "@babel/preset-env": "^7.0.0",
@@ -52,6 +53,7 @@
     "jsdom": "^13.1.0",
     "jsdom-global": "^3.0.2",
     "mini-css-extract-plugin": "^0.4.2",
+    "node-fetch": "^2.6.1",
     "thread-loader": "^1.2.0",
     "vue": "^2.6.12",
     "vue-jest": "^3.0.2",
@@ -96,6 +98,11 @@
     }
   },
   "keywords": [
-    "hcaptcha", "captcha", "component", "vue", "vue-component", "earn"
+    "hcaptcha",
+    "captcha",
+    "component",
+    "vue",
+    "vue-component",
+    "earn"
   ]
 }
