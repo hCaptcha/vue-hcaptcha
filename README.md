@@ -31,7 +31,6 @@ or by including the library in a script tag
 The component will automatically include and load the hCaptcha API library and append it to the root component.
 This is designed for ease of use with the hCaptcha API!
 
-**Note**: There's a known flaw when there are multiple captchas being rendered. It's recommended to use only one captcha per page.
 
 ### Api
 

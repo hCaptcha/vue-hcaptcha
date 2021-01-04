@@ -9,5 +9,6 @@ module.exports = {
     },
     transformIgnorePatterns: [
         "node_modules/(?!(babel-jest|jest-vue-preprocessor)/)"
-    ]
-}
+    ],
+    testMatch: ["**/?(*.)+(spec|test).[jt]s?(x)"]
+};
