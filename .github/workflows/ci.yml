@@ -1,9 +1,5 @@
 name: CI
-on:
-  push:
-    branches:
-      - '**'
-      - '!master'
+on: push
 jobs:
   build:
     name: Build & Test
@@ -15,6 +11,8 @@ jobs:
         with:
           node-version: '12'
       - run: npm ci
-      - run: node ./.github/workflows/version-check.js
+      - name: Check versions
+        if: github.ref != 'refs/heads/master'
+        run: node ./.github/workflows/version-check.js
       - run: npm run lint
       - run: npm run test
