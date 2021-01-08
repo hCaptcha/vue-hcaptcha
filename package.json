@@ -1,7 +1,13 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.2.7",
-  "main": "./src/main.js",
+  "version": "0.3.0",
+  "types": "types/index.d.ts",
+  "main": "./dist/@hcaptcha/vue-hcaptcha.umd.min.js",
+  "module": "./dist/@hcaptcha/vue-hcaptcha.common.js",
+  "files": [
+    "dist/@hcaptcha",
+    "types/index.d.ts"
+  ],
   "author": "hCaptcha team and contributors",
   "homepage": "https://github.com/hCaptcha/vue-hcaptcha",
   "organization": "hCaptcha",
@@ -15,11 +21,12 @@
     "url": "https://github.com/hCaptcha/vue-hcaptcha/issues"
   },
   "scripts": {
-    "test": "vue-cli-service test:unit",
+    "test": "npm run test:unit && npm run test:types",
+    "test:unit": "vue-cli-service test:unit",
+    "test:types": "tsc -p types/__tests__",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build --target lib src/main.js"
   },
   "devDependencies": {
     "@actions/core": "^1.2.6",
@@ -55,6 +62,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "node-fetch": "^2.6.1",
     "thread-loader": "^1.2.0",
+    "typescript": "^4.1.3",
     "vue": "^2.6.12",
     "vue-jest": "^3.0.2",
     "vue-loader": "^15.4.2",
@@ -104,5 +112,8 @@
     "vue",
     "vue-component",
     "earn"
-  ]
+  ],
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  }
 }

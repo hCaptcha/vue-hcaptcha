@@ -15,4 +15,5 @@ jobs:
         if: github.ref != 'refs/heads/master'
         run: node ./.github/workflows/version-check.js
       - run: npm run lint
+      - run: npm run build
       - run: npm run test

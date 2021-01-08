@@ -8,9 +8,15 @@ You can install this library via npm with:
 npm install @hcaptcha/vue-hcaptcha --save
 ```
 
-or by including the library in a script tag
+or via yarn:
 ```
-<script src="../vue-hcaptcha.js"></script>
+yarn add @hcaptcha/vue-hcaptcha
+```
+
+or via script tag (`Vue` must be globally available)
+```
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/@hcaptcha/vue-hcaptcha"></script>
 ```
 
 #### Basic Usage
@@ -36,21 +42,44 @@ This is designed for ease of use with the hCaptcha API!
 
 #### Props
 
-|Name|Values/Type|Required|Description|
-|---|---|---|:---:|
-|`sitekey`|String|**Yes**|This is your sitekey, this allows you to load captcha. If you need a sitekey, please visit [hCaptcha](https://www.hcaptcha.com), and sign up to get your sitekey.|
-|`size`|String (normal, compact, invisible)|No, default: normal|This specifies the "size" of the component. hCaptcha allows you to decide how big the component will appear on render, this always defaults to normal.|
-|`theme`|String (light, dark)|No, default: light|hCaptcha supports both a light and dark theme. If no theme is inherently set, the captcha will always default to light.|
-|`tabindex`|Integer|No, default: 0|Set the tabindex of the widget and popup. When appropriate, this can make navigation of your site more intuitive.|
-|`language`|String (ISO 639-2 code)|No, default: (auto)|hCaptcha auto-detects language via the user's browser. This overrides that to set a default UI language.|
+|Name|Values/Type|Required|Default|Description|
+|---|---|---|---|---|
+|`sitekey`|String|**Yes**|`-`|This is your sitekey, this allows you to load captcha. If you need a sitekey, please visit [hCaptcha](https://www.hcaptcha.com), and sign up to get your sitekey.|
+|`size`|String (normal, compact, invisible)|No|`normal`|This specifies the "size" of the component. hCaptcha allows you to decide how big the component will appear on render, this always defaults to normal.|
+|`theme`|String (light, dark)|No|`light`|hCaptcha supports both a light and dark theme. If no theme is inherently set, the captcha will always default to light.|
+|`tabindex`|Integer|No|`0`|Set the tabindex of the widget and popup. When appropriate, this can make navigation of your site more intuitive.|
+|`language`|String (ISO 639-2 code)|No|`auto`|hCaptcha auto-detects language via the user's browser. This overrides that to set a default UI language.|
+|`reCaptchaCompat`|Boolean|No|`true`|Disable drop-in replacement for reCAPTCHA with `false` to prevent hCaptcha from injecting into window.grecaptcha.|
+|`challengeContainer`|String|No|`-`|A custom element id to render the hCaptcha challenge.|
+|`rqdata`|String|No|-|See Enterprise docs.|
+|`sentry`|Boolean|No|-|See Enterprise docs.|
+|`apiEndpoint`|String|No|-|See Enterprise docs.|
+|`endpoint`|String|No|-|See Enterprise docs.|
+|`reportapi`|String|No|-|See Enterprise docs.|
+|`assethost`|String|No|-|See Enterprise docs.|
+|`imghost`|String|No|-|See Enterprise docs.|
+
 
 #### Events
 
-- `@verify="onVerify"`
-- `@expired="onExpired"`
-- `@error="onError"` (The captcha will automatically reset on error)
-- `@opened="onOpened"` 
-- `@closed="onClosed"` 
+|Event|Params|Description|
+|---|---|---|
+|`error`|`err`|When an error occurs. Component will reset immediately after an error.|
+|`verify`|`token, eKey`|When challenge is completed. The `token` and an `eKey` are passed along.|
+|`expired`|-|When the current token expires.|
+|`challengeExpired`|-|When the unfinished challenge expires.|
+|`opened`|-|When the challenge is opened.|
+|`closed`|-|When the challenge is opened.|
+|`reset`|-|When the challenge is reset.|
+|`rendered`|-|When the challenge is rendered.|
+|`executed`|-|When the challenge is executed.|
+
+### Methods
+
+|Method|Description|
+|---|---|
+|`execute()`|Programmatically trigger a challenge request|
+|`reset()`|Reset the current challenge|
 
 ### FAQ
 

@@ -1,4 +1,4 @@
-import vuehcaptcha from './component/vue-hcaptcha.vue'
+import VueHcaptcha from './hcaptcha.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
@@ -6,13 +6,16 @@ export function install(Vue) {
         return;
     }
     install.installed = true;
-    Vue.component('vuehcaptcha', vuehcaptcha);
+    // Keep this for backwards compatibility
+    Vue.component('vuehcaptcha', VueHcaptcha);
+    // Register camelcase which allows component with dash in it: <vue-hcaptcha />
+    Vue.component('VueHcaptcha', VueHcaptcha);
 }
 
 // Create module definition for Vue.use()
 const plugin = {
     install
-}
+};
 
 // Auto-install when vue is found (eg. in browser via <script> tag)
 let GlobalVue = null;
@@ -26,4 +29,4 @@ if (GlobalVue) {
 }
 
 // To allow use as module (npm/webpack/etc.) export component
-export default vuehcaptcha
+export default VueHcaptcha;

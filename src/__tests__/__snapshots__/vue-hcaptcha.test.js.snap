@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VueHCaptcha component renders correctly 1`] = `
-<div>
-  <div
-    id="hcap-script"
-  />
-</div>
+<div
+  id="hcap-script"
+/>
 `;
