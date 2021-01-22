@@ -95,25 +95,32 @@ Sign up at [hCaptcha](https://www.hcaptcha.com) to get your sitekey today. Check
 
 ![Demo](https://raw.githubusercontent.com/hCaptcha/vue-hcaptcha/master/screenshots/demo.gif)
 
-To run the demo, simply ```npm run serve``` after downloading the repo, this will start a development server on localhost:8080. Open your console to see the demo app emitting events.
-
-To test locally, you can run the following NPM commands:
-- ```npm run serve```
-    - This initiates the hot reload dev server from the vue-cli
-- ```npm run build```
-    - This will build your version of the component with your customizations for production.
-- ```npm run lint``` and ```npm run lint:fix```
-    - This will enable ESLint to help keep your code clean!
+To run the demo:
+1. clone this repo `git clone https://github.com/hCaptcha/vue-hcaptcha.git`
+2. run ```npm run serve``` 
+   * it will start the demo app on localhost:8080
+   * open your console to see the demo app emitting events
 
 ### TypeScript
 
-Please see the [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/44299) entry.
+TypeScript is supported (`types/index.d.ts`), and you can see an example by running `npm run serve:ts`.
 
 
-### Note for maintainers: Publishing npm package
-Using the proper credentials (granted to @Hcaptcha org), you'll need to do the following to publish:
+### Note for maintainers
 
-- `npm login`
-- Bump version in package.json
-- Commit changes
-- `npm publish .`
+### Scripts
+
+* `npm run serve` - will start the traditional demo app with hot reload
+* `npm run serve:ts` - will start the typescript demo app with hot reload
+* `npm run test` - will test the library: unit tests and types
+* `npm run build` - will build the production version
+* `npm run lint` - will check for lint issues
+* `npm run lint:fix` - will fix for lint issues
+
+
+#### Publishing
+
+To publish a new version, follow the next steps:
+1. Bump the version in `package.json`
+2. Create a [Github Release](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release) with version from step 1 **without** a prefix such as `v` (e.g. `1.0.3`)
+  * `publish` workflow will be triggered which will: build, test and deploy the package to the [npm @hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha).

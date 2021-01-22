@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.3.0-alpha2",
+  "version": "0.3.0",
   "types": "types/index.d.ts",
   "main": "./dist/@hcaptcha/vue-hcaptcha.umd.min.js",
   "module": "./dist/@hcaptcha/vue-hcaptcha.common.js",
@@ -26,7 +26,9 @@
     "test:types": "tsc -p types/__tests__",
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib src/main.js"
+    "build": "vue-cli-service build --target lib src/main.js",
+    "serve": "npm run --prefix examples/traditional-vue-app serve",
+    "serve:ts": "npm run --prefix examples/ts-app serve"
   },
   "devDependencies": {
     "@actions/core": "^1.2.6",
