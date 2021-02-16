@@ -69,7 +69,7 @@ This is designed for ease of use with the hCaptcha API!
 |`expired`|-|When the current token expires.|
 |`challengeExpired`|-|When the unfinished challenge expires.|
 |`opened`|-|When the challenge is opened.|
-|`closed`|-|When the challenge is opened.|
+|`closed`|-|When the challenge is closed.|
 |`reset`|-|When the challenge is reset.|
 |`rendered`|-|When the challenge is rendered.|
 |`executed`|-|When the challenge is executed.|
