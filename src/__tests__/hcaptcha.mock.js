@@ -1,8 +1,8 @@
-export const MOCK_WIDGET_ID = 'mock-widget-id';
-export const MOCK_TOKEN = 'mock-token';
-export const MOCK_EKEY = 'mock-ekey';
+export const MOCK_WIDGET_ID = 'mock-widget-id'
+export const MOCK_TOKEN = 'mock-token'
+export const MOCK_EKEY = 'mock-ekey'
 
-/*global jest*/
+/* global jest */
 
 export function getMockedHcaptcha() {
     return {
@@ -14,5 +14,5 @@ export function getMockedHcaptcha() {
         getRespKey: jest.fn(() => MOCK_EKEY),
         reset: jest.fn(),
         execute: jest.fn(),
-    };
+    }
 }
