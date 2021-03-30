@@ -5,6 +5,7 @@
 <script>
 import {defineComponent, toRefs, reactive} from 'vue'
 import {loadApiEndpointIfNotAlready} from './hcaptcha-script'
+import mitt from 'mitt'
 
 export default defineComponent({
     name: 'VueHcaptcha',
@@ -70,6 +71,7 @@ export default defineComponent({
         const data = reactive({
             widgetId: null,
             hcaptcha: null,
+            emitter: mitt()
         })
         return {
             ...toRefs(data),
@@ -80,12 +82,10 @@ export default defineComponent({
             .then(this.onApiLoaded)
             .catch(this.onError)
     },
-    unmounted() {
+    beforeUnmount() {
         if (this.widgetId) {
-            this.hcaptcha.then(() => {
-                this.hcaptcha.reset(this.widgetId)
-                this.hcaptcha.remove(this.widgetId)
-            })
+            this.hcaptcha.reset(this.widgetId)
+            this.hcaptcha.remove(this.widgetId)
         }
     },
     methods: {
@@ -116,6 +116,9 @@ export default defineComponent({
             if (this.widgetId) {
                 this.hcaptcha.execute(this.widgetId)
                 this.onExecuted()
+            } else {
+                // execute after el is rendered
+                this.emitter('rendered', this.execute)
             }
         },
         reset() {
@@ -131,8 +134,6 @@ export default defineComponent({
         },
         onRendered() {
             this.$emit('rendered')
-            // execute after el is rendered
-            this.execute()
         },
         onExecuted() {
             this.$emit('executed')
