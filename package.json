@@ -1,6 +1,6 @@
 {
   "name": "@jdinabox/vue-3-hcaptcha",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "types": "types/index.d.ts",
   "main": "./dist/vue-3-hcaptcha.umd.min.js",
   "module": "./dist/vue-3-hcaptcha.common.js",
