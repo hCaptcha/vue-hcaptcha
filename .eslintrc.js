@@ -3,7 +3,7 @@ module.exports = {
     "parserOptions": {
         "parser": "babel-eslint"
     },
-    "plugins": ["flowtype", "html", "vue"],
+    "plugins": ["flowtype", "html"],
     "settings": {
         "html/html-extensions": [".html"]
     },
@@ -13,7 +13,8 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
-        "plugin:vue/recommended"
+        'plugin:vue/vue3-essential',
+        '@vue/standard'
     ],
     "rules": {
         "curly": ["error", "all"],
