@@ -7,7 +7,7 @@ export function install(Vue) {
     }
     install.installed = true;
     // Keep this for backwards compatibility
-    Vue.component('vuehcaptcha', VueHcaptcha);
+    Vue.component('Vuehcaptcha', VueHcaptcha);
     // Register camelcase which allows component with dash in it: <vue-hcaptcha />
     Vue.component('VueHcaptcha', VueHcaptcha);
 }

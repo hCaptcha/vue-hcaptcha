@@ -3,83 +3,89 @@
 </template>
 
 <script>
-import {loadApiEndpointIfNotAlready} from './hcaptcha-script';
+import {defineComponent, reactive, toRefs} from "vue-demi";
+import {loadApiEndpointIfNotAlready} from "./hcaptcha-script";
+import mitt from "mitt";
 
-export default {
-    name: 'VueHcaptcha',
+export default defineComponent({
+    name: "VueHcaptcha",
     props: {
         sitekey: {
             type: String,
-            required: true
+            required: true,
         },
         theme: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         size: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         tabindex: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         language: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         reCaptchaCompat: {
             type: Boolean,
-            default: true
+            default: true,
         },
         challengeContainer: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         rqdata: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         sentry: {
             type: Boolean,
-            default: true
+            default: true,
         },
         apiEndpoint: {
             type: String,
-            default: 'https://hcaptcha.com/1/api.js'
+            default: "https://hcaptcha.com/1/api.js",
         },
         endpoint: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         reportapi: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         assethost: {
             type: String,
-            default: undefined
+            default: undefined,
         },
         imghost: {
             type: String,
-            default: undefined
+            default: undefined,
         },
     },
-    data: () => {
-        return {
+    setup() {
+        const data = reactive({
             widgetId: null,
-            hcaptcha: null
+            hcaptcha: null,
+            emitter: mitt(),
+        });
+        return {
+            ...toRefs(data),
         };
     },
     mounted() {
-        return loadApiEndpointIfNotAlready(this.$props).then(this.onApiLoaded).catch(this.onError);
+        return loadApiEndpointIfNotAlready(this.$props)
+            .then(this.onApiLoaded)
+            .catch(this.onError);
     },
-    unmounted() {
+    beforeUnmount() {
         if (this.widgetId) {
-            this.hcaptcha.then(() => {
-                this.hcaptcha.reset(this.widgetId);
-                this.hcaptcha.remove(this.widgetId);
-            });
+            this.hcaptcha.reset(this.widgetId);
+            this.hcaptcha.remove(this.widgetId);
         }
     },
     methods: {
@@ -90,15 +96,15 @@ export default {
                 theme: this.theme,
                 size: this.size,
                 tabindex: this.tabindex,
-                'callback': this.onVerify,
-                'expired-callback': this.onExpired,
-                'chalexpired-callback': this.onChallengeExpired,
-                'error-callback': this.onError,
-                'open-callback': this.onOpen,
-                'close-callback': this.onClose
+                callback: this.onVerify,
+                "expired-callback": this.onExpired,
+                "chalexpired-callback": this.onChallengeExpired,
+                "error-callback": this.onError,
+                "open-callback": this.onOpen,
+                "close-callback": this.onClose,
             };
             if (this.challengeContainer) {
-                opt['challenge-container'] = this.challengeContainer;
+                opt["challenge-container"] = this.challengeContainer;
             }
             this.widgetId = this.hcaptcha.render(this.$el, opt);
             if (this.rqdata) {
@@ -112,7 +118,7 @@ export default {
                 this.onExecuted();
             } else {
                 // execute after el is rendered
-                this.$on('rendered', this.execute);
+                this.emitter("rendered", this.execute);
             }
         },
         reset() {
@@ -120,39 +126,42 @@ export default {
                 this.hcaptcha.reset(this.widgetId);
                 this.onReset();
             } else {
-                this.$emit('error', 'Element is not rendered yet and thus cannot reset it. Wait for `rendered` event to safely call reset.');
+                this.$emit(
+                    "error",
+                    "Element is not rendered yet and thus cannot reset it. Wait for `rendered` event to safely call reset."
+                );
             }
         },
         onRendered() {
-            this.$emit('rendered');
+            this.$emit("rendered");
         },
         onExecuted() {
-            this.$emit('executed');
+            this.$emit("executed");
         },
         onReset() {
-            this.$emit('reset');
+            this.$emit("reset");
         },
         onError(e) {
-            this.$emit('error', e);
+            this.$emit("error", e);
             this.reset();
         },
         onVerify() {
             const token = this.hcaptcha.getResponse(this.widgetId);
             const eKey = this.hcaptcha.getRespKey(this.widgetId);
-            this.$emit('verify', token, eKey);
+            this.$emit("verify", token, eKey);
         },
         onExpired() {
-            this.$emit('expired');
+            this.$emit("expired");
         },
         onChallengeExpired() {
-            this.$emit('challengeExpired');
+            this.$emit("challengeExpired");
         },
         onOpen() {
-            this.$emit('opened');
+            this.$emit("opened");
         },
         onClose() {
-            this.$emit('closed');
-        }
-    }
-};
+            this.$emit("closed");
+        },
+    },
+});
 </script>

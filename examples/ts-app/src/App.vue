@@ -12,7 +12,7 @@
 <script lang="ts">
 import {Component, Vue, Ref} from 'vue-property-decorator';
 // import VueHcaptcha from '@hcaptcha/vue-hcaptcha'; // for production
-import VueHcaptcha from '../../../src/hcaptcha'; // for development
+import  from '../../../dist/@hcaptcha/vue-hcaptcha.es.js'; // for development
 
 
 @Component({

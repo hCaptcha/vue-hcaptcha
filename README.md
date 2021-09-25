@@ -1,6 +1,6 @@
 # Vue.js hCaptcha Component Library
 
-hCaptcha Component Library for Vue.js. Compatible with Vue 2.
+hCaptcha Component Library for Vue.js. Compatible with Vue 2 & 3.
 
 ## Installation
 You can install this library via npm with:
