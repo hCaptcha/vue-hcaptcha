@@ -27,25 +27,30 @@
     "url": "https://github.com/hCaptcha/vue-hcaptcha/issues"
   },
   "scripts": {
-    "test": "npm run test:unit && npm run test:types",
-    "test:unit": "vue-cli-service test:unit",
-    "test:types": "tsc -p types/__tests__",
+    "test": "jest",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "build": "vite build",
     "serve": "npm run --prefix examples/traditional-vue-app serve",
     "serve:ts": "npm run --prefix examples/ts-app serve"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
     "@vitejs/plugin-vue": "^1.9.2",
-    "babel-eslint": "^10.1.0",
+    "@vue/test-utils": "^2.0.0-rc.15",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "babel-jest": "^27.2.2",
     "eslint": "^7.32.0",
     "eslint-plugin-flowtype": "^6.1.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-vue": "^7.18.0",
+    "jest": "^27.2.2",
     "mitt": "^3.0.0",
+    "regenerator-runtime": "^0.13.9",
     "vite": "^2.5.10",
-    "vue": "3",
-    "vue-demi": "^0.11.4"
+    "vue": "^3.2.19"
   },
   "eslintConfig": {
     "root": true,
@@ -80,12 +85,9 @@
     "earn"
   ],
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "vue": "^2.0.0 || >=3.0.0"
+    "vue": "^3.0.0"
   },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
+  "dependencies": {
+    "core-js": "3"
   }
 }

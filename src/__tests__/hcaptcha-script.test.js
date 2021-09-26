@@ -1,4 +1,5 @@
-import {getScriptSrc, loadApiEndpointIfNotAlready} from '@/hcaptcha-script';
+import { getScriptSrc, loadApiEndpointIfNotAlready } from '@/hcaptcha-script';
+import 'regenerator-runtime/runtime';
 
 /*global describe, test, expect, beforeEach*/
 
@@ -25,7 +26,7 @@ describe('hcaptcha-script', () => {
         expect(docHtml.split(substr).length - 1).toBe(expectedCount);
     }
 
-    test('does not reload hcaptcha if already present', async() => {
+    test('does not reload hcaptcha if already present', async () => {
         // Simulate hcaptcha presence
         window.hcaptcha = 1;
         await loadApiEndpointIfNotAlready(config);
@@ -41,7 +42,7 @@ describe('hcaptcha-script', () => {
         assertDomContains(1, 'https://hcaptcha.com/1/api.js?render=explicit');
     });
 
-    test('loads hcaptcha if not present', async() => {
+    test('loads hcaptcha if not present', async () => {
         window.hcaptcha = undefined;
         const promise = loadApiEndpointIfNotAlready(config);
         assertDomContains(1, 'https://hcaptcha.com/1/api.js?render=explicit');

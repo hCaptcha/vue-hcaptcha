@@ -3,13 +3,17 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry"
+        "useBuiltIns": "entry",
+        "corejs": "3.3.5",
       }
     ]
   ],
   "plugins": [
-    ["@babel/plugin-transform-modules-commonjs", {
-      "allowTopLevelThis": true
-    }]
+    [
+      "@babel/plugin-transform-modules-commonjs",
+      {
+        "allowTopLevelThis": true
+      }
+    ]
   ]
 }

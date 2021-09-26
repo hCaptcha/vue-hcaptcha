@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {defineComponent, reactive, toRefs} from "vue-demi";
+import {defineComponent, reactive, toRefs} from "vue";
 import {loadApiEndpointIfNotAlready} from "./hcaptcha-script";
 import mitt from "mitt";
 
@@ -118,7 +118,7 @@ export default defineComponent({
                 this.onExecuted();
             } else {
                 // execute after el is rendered
-                this.emitter("rendered", this.execute);
+                this.emitter.on("rendered", this.execute);
             }
         },
         reset() {
@@ -134,6 +134,7 @@ export default defineComponent({
         },
         onRendered() {
             this.$emit("rendered");
+            this.emitter.emit("rendered", "");
         },
         onExecuted() {
             this.$emit("executed");

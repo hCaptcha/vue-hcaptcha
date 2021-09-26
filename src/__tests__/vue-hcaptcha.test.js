@@ -3,6 +3,7 @@ import {DEBUG_SITE_KEY, getTestWrapper} from './utils';
 import {getMockedHcaptcha, MOCK_EKEY, MOCK_TOKEN, MOCK_WIDGET_ID} from './hcaptcha.mock';
 import {loadApiEndpointIfNotAlready} from '@/hcaptcha-script';
 import {nextTick} from 'vue';
+import 'regenerator-runtime/runtime';
 
 /*global describe, test, expect, beforeEach, jest*/
 
@@ -108,7 +109,7 @@ describe('VueHCaptcha', () => {
         window.hcaptcha = getMockedHcaptcha();
         wrapper = getTestWrapper(props);
         await nextTick();
-        expect(wrapper.vm.$data.widgetId).toBe(MOCK_WIDGET_ID);
+        expect(wrapper.vm.widgetId).toBe(MOCK_WIDGET_ID);
         expect(wrapper.vm.hcaptcha.render.mock.calls.length).toBe(1);
         expect(wrapper.vm.hcaptcha.render.mock.calls[0][1]).toMatchObject({
             sitekey: props.sitekey,
@@ -132,7 +133,7 @@ describe('VueHCaptcha', () => {
         window.hcaptcha = getMockedHcaptcha();
         wrapper = getTestWrapper(props);
         await nextTick();
-        expect(wrapper.vm.$data.widgetId).toBe(MOCK_WIDGET_ID);
+        expect(wrapper.vm.widgetId).toBe(MOCK_WIDGET_ID);
         expect(wrapper.vm.hcaptcha.render.mock.calls.length).toBe(1);
         expect(wrapper.vm.hcaptcha.setData.mock.calls[0][1]).toMatchObject({
             rqdata: props.rqdata
