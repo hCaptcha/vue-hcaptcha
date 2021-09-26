@@ -7,7 +7,8 @@ export function install(Vue) {
     }
     install.installed = true;
     // Keep this for backwards compatibility
-    Vue.component('Vuehcaptcha', VueHcaptcha);
+    // eslint-disable-next-line
+    Vue.component('vuehcaptcha', VueHcaptcha);
     // Register camelcase which allows component with dash in it: <vue-hcaptcha />
     Vue.component('VueHcaptcha', VueHcaptcha);
 }
