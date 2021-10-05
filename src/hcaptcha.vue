@@ -147,9 +147,9 @@ export default defineComponent({
             this.reset();
         },
         onVerify() {
-            const token = this.hcaptcha.getResponse(this.widgetId);
-            const eKey = this.hcaptcha.getRespKey(this.widgetId);
-            this.$emit("verify", token, eKey);
+            const response = this.hcaptcha.getResponse(this.widgetId);
+            const key = this.hcaptcha.getRespKey(this.widgetId);
+            this.$emit("verify", response, key);
         },
         onExpired() {
             this.$emit("expired");
