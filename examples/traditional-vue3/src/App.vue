@@ -1,3 +1,40 @@
+<script setup>
+import { ref } from "vue";
+// import VueHcaptcha from '@hcaptcha/vue3'; // for production
+import VueHcaptcha from '../../../packages/vue2/src/hcaptcha.vue';
+
+const verified = ref(false);
+const expired = ref(false);
+const token = ref("");
+const eKey = ref("");
+const error = ref("");
+const invisibleHcaptcha = ref(null);
+
+function onVerify(tokenStr, ekey) {
+    verified.value = true;
+    token.value = tokenStr;
+    eKey.value = ekey;
+    console.log(`Callback token: ${tokenStr}, ekey: ${ekey}`);
+}
+function onExpire() {
+    verified.value = false;
+    token.value = null;
+    eKey.value = null;
+    expired.value = true;
+    console.log('Expired');
+}
+function onError(err) {
+    token.value = null;
+    eKey.value = null;
+    error.value = err;
+    console.log(`Error: ${err}`);
+}
+function onSubmit() {
+    console.log('Submitting the invisible hCaptcha');
+    invisibleHcaptcha.value.execute();
+}
+</script>
+
 <template>
     <div id="App">
         <h1>Vue hCaptcha Demo</h1>
@@ -52,52 +89,6 @@
         </button>
     </div>
 </template>
-
-<script>
-// import VueHcaptcha from '@hcaptcha/vue-hcaptcha'; // for production
-import VueHcaptcha from '../../../packages/vue2/src/main'; // for development
-
-export default {
-    name: 'App',
-    components: {
-        VueHcaptcha
-    },
-    data() {
-        return {
-            verified: false,
-            expired: false,
-            token: null,
-            eKey: null,
-            error: null,
-        }
-    },
-    methods: {
-        onVerify(token, ekey) {
-            this.verified = true;
-            this.token = token;
-            this.eKey = ekey;
-            console.log(`Callback token: ${token}, ekey: ${ekey}`);
-        },
-        onExpire() {
-            this.verified = false;
-            this.token = null;
-            this.eKey = null;
-            this.expired = true;
-            console.log('Expired');
-        },
-        onError(err) {
-            this.token = null;
-            this.eKey = null;
-            this.error = err;
-            console.log(`Error: ${err}`);
-        },
-        onSubmit() {
-            console.log('Submitting the invisible hCaptcha', this.$refs.invisibleHcaptcha);
-            this.$refs.invisibleHcaptcha.execute();
-        }
-    }
-}
-</script>
 
 <style>
 body {

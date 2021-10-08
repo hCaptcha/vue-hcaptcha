@@ -19,6 +19,6 @@ jobs:
       - run: lerna run lint --stream
       - run: lerna run build --stream
       - run: lerna run test --stream
-      - run: lerna publish
+      - run: lerna publish -y from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -1,0 +1,36 @@
+{
+  "name": "@hcaptcha/vue3",
+  "version": "0.0.1",
+  "author": "hCaptcha team and contributors",
+  "homepage": "https://github.com/hCaptcha/vue-hcaptcha",
+  "organization": "hCaptcha",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hCaptcha/vue-hcaptcha.git",
+    "web": "https://github.com/hCaptcha/vue-hcaptcha"
+  },
+  "bugs": {
+    "url": "https://github.com/hCaptcha/vue-hcaptcha/issues"
+  },
+  "main": "./dist/hcaptcha-vue3.umd.js",
+  "module": "./dist/hcaptcha-vue3.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "vue": "^3.2.19"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "vite": "^2.6.4"
+  }
+}
