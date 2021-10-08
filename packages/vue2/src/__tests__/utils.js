@@ -8,11 +8,11 @@ export function getTestWrapper(
         sitekey: DEBUG_SITE_KEY
     },
     shallow = false,
-    attachToDocument = true
+    attachTo = document.body
 ) {
     const mountFn = shallow ? shallowMount : mount;
     return mountFn(VueHcaptcha, {
         propsData: props,
-        attachToDocument: attachToDocument
+        attachTo: attachTo
     });
 }

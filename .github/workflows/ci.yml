@@ -2,12 +2,16 @@ name: CI
 on: push
 jobs:
   build:
-    name: Build & Test
+    name: "Build & Test"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: npm run test
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.5.0'
+          cache: 'yarn'
+      - run: yarn setup
+      - run: lerna run lint --stream
+      - run: lerna run build --stream
+      - run: lerna run test --stream
