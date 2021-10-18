@@ -1,34 +1,40 @@
-<meta charset="utf-8">
-<title>@hcaptcha/vue-hcaptcha demo</title>
-<script src="https://unpkg.com/vue"></script>
-<script src="../../packages/vue2/dist/@hcaptcha/vue-hcaptcha.umd.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@hcaptcha/vue-hcaptcha demo</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="../../packages/vue2/dist/@hcaptcha/vue-hcaptcha.umd.js"></script>
+</head>
+<body>
+    <div id="root">
+        <vue-hcaptcha
+                sitekey="10000000-ffff-ffff-ffff-000000000001"
+                @verify="onVerify"
+                @expired="onExpire"
+                @challengeExpired="onExpire"
+                @error="onError"
+        ></vue-hcaptcha>
+    </div>
 
-<div id="root">
-    <vue-hcaptcha
-            sitekey="10000000-ffff-ffff-ffff-000000000001"
-            @verify="onVerify"
-            @expired="onExpire"
-            @challengeExpired="onExpire"
-            @error="onError"
-    ></vue-hcaptcha>
-</div>
-
-<script>
-    /* eslint-disable no-console */
-    // eslint-disable-next-line no-undef
-    new Vue({
-        el: '#root',
-        methods: {
-            onVerify: (token, eKey) => {
-                console.log('Verified: ', {token, eKey})
-            },
-            onExpire: () => {
-                console.log('Expired')
-            },
-            onError: (err) => {
-                console.log('Error', err)
+    <script>
+        /* eslint-disable no-console */
+        // eslint-disable-next-line no-undef
+        new Vue({
+            el: '#root',
+            methods: {
+                onVerify: (token, eKey) => {
+                    console.log('Verified: ', { token, eKey })
+                },
+                onExpire: () => {
+                    console.log('Expired')
+                },
+                onError: (err) => {
+                    console.log('Error', err)
+                }
             }
-        }
-    })
-    /* eslint-enable no-console */
-</script>
+        })
+        /* eslint-enable no-console */
+    </script>
+</body>
+</html>

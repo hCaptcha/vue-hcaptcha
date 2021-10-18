@@ -27,8 +27,8 @@
     "lint": "vue-cli-service lint --no-fix",
     "lint:fix": "vue-cli-service lint",
     "build": "vue-cli-service build --target lib src/main.js",
-    "serve": "npm run --prefix examples/traditional-vue-app serve",
-    "serve:ts": "npm run --prefix examples/ts-app serve"
+    "serve": "npm run --prefix examples/traditional-vue2 serve",
+    "serve:ts": "npm run --prefix examples/ts-vue2 serve"
   },
   "devDependencies": {
     "@actions/core": "^1.2.6",
