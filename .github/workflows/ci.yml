@@ -12,6 +12,6 @@ jobs:
           node-version: '16.5.0'
           cache: 'yarn'
       - run: yarn setup
-      - run: lerna run lint --stream
-      - run: lerna run build --stream
-      - run: lerna run test --stream
+      - run: yarn lint --stream
+      - run: yarn build --stream
+      - run: yarn test --stream

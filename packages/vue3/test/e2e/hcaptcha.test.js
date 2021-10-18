@@ -1,11 +1,11 @@
+import path from "path";
 import fs from "fs";
+import 'regenerator-runtime/runtime';
 import playwright from "playwright";
 import JestImageSnapshot from "jest-image-snapshot";
 import { setupPage } from "./jest-setup";
 
-const DEBUG = process.env.DEBUG || false;
-
-const hCaptchaVue3 = fs.readFileSync("./dist/hcaptcha-vue3.umd.js", "utf-8");
+const hCaptchaVue3 = fs.readFileSync(path.resolve(__dirname, "..", "..", "dist", "hcaptcha-vue3.umd.js"), "utf-8");
 
 const HTML = `
 <!DOCTYPE html>
@@ -31,7 +31,8 @@ const HTML = `
                 .createApp({
                 methods: {
                     onVerify: (token, eKey) => {
-                        console.log('Verified: ', {token, eKey})
+                        console.log('Verified: ', {token, eKey});
+                        window.onVerify({token, eKey});
                     },
                     onExpire: () => {
                         console.log('Expired')
@@ -48,7 +49,6 @@ const HTML = `
 </html>
 `;
 
-const headless = !DEBUG;
 const args = [ "--no-sandbox", "--disable-setuid-sandbox" ];
 
 async function waitForFrame(ownerFrame, name, hcaptchaId) {
@@ -62,31 +62,52 @@ async function waitForFrame(ownerFrame, name, hcaptchaId) {
     return { elem, frame };
 }
 
+const toMatchImageSnapshot = JestImageSnapshot.configureToMatchImageSnapshot({
+    failureThreshold: 0.05,
+    failureThresholdType: "percent"
+});
+expect.extend({ toMatchImageSnapshot });
+
 describe("hCaptcha vue3", () => {
     let browser, page;
 
+    beforeAll(async () => {
+        browser = await playwright.chromium.launch({ headless: true, args });
+    });
+
+    afterAll(async () => {
+        await browser.close();
+    });
+
     beforeEach(async () => {
-        browser = await playwright.chromium.launch({ headless, args, devtools: true });
         page = await browser.newPage({ bypassCSP: true });
         setupPage(page);
-        const toMatchImageSnapshot = JestImageSnapshot.configureToMatchImageSnapshot({
-            failureThreshold    : 0.05,
-            failureThresholdType: "percent"
-        });
-        expect.extend({ toMatchImageSnapshot });
         await page.setViewportSize({ width: 1280, height: 720 });
-        await page.setContent(HTML);
+        await page.route(/https:\/\/hcaptcha\.local/, route => route.fulfill({ body: HTML }));
+        await page.goto("https://hcaptcha.local");
     });
 
     afterEach(async () => {
-        if (!DEBUG) {
-            browser.close();
-        }
+        await page.close();
     });
 
     it("should render anchor", async () => {
         const { frame } = await waitForFrame(page, "checkbox");
         const anchor = await frame.$("#anchor");
+        expect(await anchor.screenshot()).toMatchImageSnapshot({ failureThreshold: 0.01 });
+    });
+
+    it("should get token", async () => {
+        const onVerifyMock = jest.fn();
+        await page.exposeBinding("onVerify", onVerifyMock);
+        const getRequestPromise = page.waitForRequest("**/getcaptcha*");
+        const { frame } = await waitForFrame(page, "checkbox");
+        const anchor = await frame.$("#anchor");
+        await anchor.click();
+        await getRequestPromise;
+        await frame.waitForSelector(".check");
+        expect(onVerifyMock).toHaveBeenCalledTimes(1);
+        expect(onVerifyMock).toHaveBeenCalledWith(expect.anything(), { token: "10000000-aaaa-bbbb-cccc-000000000001", eKey: "" });
         expect(await anchor.screenshot()).toMatchImageSnapshot({ failureThreshold: 0.01 });
     });
 

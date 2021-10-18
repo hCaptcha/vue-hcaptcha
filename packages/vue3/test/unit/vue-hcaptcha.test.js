@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import VueHcaptcha from "../../../vue2/src/hcaptcha.vue";
 import { getMockedHcaptcha, MOCK_EKEY, MOCK_TOKEN, MOCK_WIDGET_ID } from "../../../vue2/src/__tests__/hcaptcha.mock.js";
 import { getTestWrapper, DEBUG_SITE_KEY } from "./utils.js";

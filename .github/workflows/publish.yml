@@ -16,9 +16,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
       - run: yarn setup
-      - run: lerna run lint --stream
-      - run: lerna run build --stream
-      - run: lerna run test --stream
+      - run: yarn lint --stream
+      - run: yarn build --stream
+      - run: yarn test --stream
       - run: lerna publish -y from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
