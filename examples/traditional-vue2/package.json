@@ -1,6 +1,6 @@
 {
   "name": "vue-hcaptcha-demo-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
