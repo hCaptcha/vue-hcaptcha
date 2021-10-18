@@ -1,38 +1,54 @@
 # Vue.js hCaptcha Component Library
 
-hCaptcha Component Library for Vue.js. Compatible with Vue 2.
+hCaptcha Component Library for Vue.js. Compatible with Vue 2 and 3.
 
 ## Installation
 You can install this library via npm with:
-```
-npm install @hcaptcha/vue-hcaptcha --save
-```
+* vue2: `npm install @hcaptcha/vue-hcaptcha --save`
+* vue3: `npm install @hcaptcha/vue3 --save`
 
 or via yarn:
-```
-yarn add @hcaptcha/vue-hcaptcha
-```
+* vue2: `yarn add @hcaptcha/vue-hcaptcha`
+* vue3: `yarn add @hcaptcha/vue3`
 
 or via script tag (`Vue` must be globally available)
-```
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/@hcaptcha/vue-hcaptcha"></script>
-```
-
+* vue2
+   ```
+   <script src="https://unpkg.com/vue"></script>
+   <script src="https://unpkg.com/@hcaptcha/vue-hcaptcha"></script>
+   ```
+* vue3
+   ```
+   <script src="https://unpkg.com/vue@next"></script>
+   <script src="https://unpkg.com/@hcaptcha/vue3"></script>
+   ```
+  
 #### Basic Usage
-```
-<template>
-    <vue-hcaptcha sitekey="**Your sitekey here**"></vue-hcaptcha>
-</template>
-
-<script>
-  import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
-  export default {
-    ...
-    components: { VueHcaptcha }
-  };
-</script>
-```
+* vue2:
+   ```
+   <template>
+       <vue-hcaptcha sitekey="**Your sitekey here**"></vue-hcaptcha>
+   </template>
+   
+   <script>
+     import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+     export default {
+       ...
+       components: { VueHcaptcha }
+     };
+   </script>
+   ```
+  
+* vue3:
+   ```
+   <template>
+       <vue-hcaptcha sitekey="**Your sitekey here**"></vue-hcaptcha>
+   </template>
+   
+   <script setup>
+     import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+   </script>
+   ```
 
 The component will automatically load the hCaptcha API library and append it to the root component.
 
