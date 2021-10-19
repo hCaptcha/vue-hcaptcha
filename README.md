@@ -5,11 +5,11 @@ hCaptcha Component Library for Vue.js. Compatible with Vue 2 and 3.
 ## Installation
 You can install this library via npm with:
 * vue2: `npm install @hcaptcha/vue-hcaptcha --save`
-* vue3: `npm install @hcaptcha/vue3 --save`
+* vue3: `npm install @hcaptcha/vue3-hcaptcha --save`
 
 or via yarn:
 * vue2: `yarn add @hcaptcha/vue-hcaptcha`
-* vue3: `yarn add @hcaptcha/vue3`
+* vue3: `yarn add @hcaptcha/vue3-hcaptcha`
 
 or via script tag (`Vue` must be globally available)
 * vue2
@@ -20,7 +20,7 @@ or via script tag (`Vue` must be globally available)
 * vue3
    ```
    <script src="https://unpkg.com/vue@next"></script>
-   <script src="https://unpkg.com/@hcaptcha/vue3"></script>
+   <script src="https://unpkg.com/@hcaptcha/vue3-hcaptcha"></script>
    ```
   
 #### Basic Usage
