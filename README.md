@@ -82,7 +82,7 @@ The component will automatically load the hCaptcha API library and append it to 
 |`error`|`err`|When an error occurs. Component will reset immediately after an error.|
 |`verify`|`token, eKey`|When challenge is completed. The `token` and an `eKey` are passed along.|
 |`expired`|-|When the current token expires.|
-|`challengeExpired`|-|When the unfinished challenge expires.|
+|`challenge-expired`|-|When the unfinished challenge expires.|
 |`opened`|-|When the challenge is opened.|
 |`closed`|-|When the challenge is closed.|
 |`reset`|-|When the challenge is reset.|
@@ -116,7 +116,8 @@ Yes, in the enterprise version: see [hCaptcha Enterprise (BotStop)](https://www.
 
 To run the demo:
 1. clone this repo `git clone https://github.com/hCaptcha/vue-hcaptcha.git`
-2. run ```npm run serve``` 
+2. ```cd examples/traditional-vue2``` 
+3. ```yarn && yarn serve``` 
    * it will start the demo app on localhost:8080
    * open your console to see the demo app emitting events
 
@@ -129,18 +130,15 @@ TypeScript is supported (`types/index.d.ts`), and you can see an example by runn
 
 #### Scripts
 
-* `npm run serve` - will start the traditional demo app with hot reload
-* `npm run serve:ts` - will start the typescript demo app with hot reload
-* `npm run test` - will test the library: unit tests and types
-* `npm run build` - will build the production version
-* `npm run lint` - will check for lint issues
-* `npm run lint:fix` - will fix for lint issues
+* `yarn lint` - will check for lint issues
+* `yarn test` - will test both vue2 and vue3 packages
+* `yarn build` - will build the production vue2,3 versions
 
 ### Notes for maintainers
 
 #### Publishing
 
 To publish a new version, follow the next steps:
-1. Bump the version in `package.json`
+1. Bump the version of the updated package: `vue2/package.json` or `vue3/package.json`
 2. Create a [Github Release](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release) with version from step 1 **without** a prefix such as `v` (e.g. `1.0.3`)
-  * `publish` workflow will be triggered which will: build, test and deploy the package to the [npm @hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha).
+  * `publish` workflow will be triggered which will: build, test and deploy the package with changed version to [npm @hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [npm @hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
