@@ -19,6 +19,6 @@ jobs:
       - run: yarn lint --stream
       - run: yarn build --stream
       - run: yarn test --stream
-      - run: lerna publish -y from-package
+      - run: lerna publish -y from-package --no-verify-access
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
