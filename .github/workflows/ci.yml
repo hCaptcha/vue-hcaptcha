@@ -10,8 +10,15 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16.5.0'
+          registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
       - run: yarn setup
       - run: yarn lint --stream
       - run: yarn build --stream
       - run: yarn test --stream
+      - run: cp README.md packages/vue2 && cp README.md packages/vue3
+      - name: "Publish"
+        if: contains('refs/heads/master', github.ref)
+        run: lerna publish -y from-package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue3-hcaptcha",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "author": "hCaptcha team and contributors",
   "homepage": "https://github.com/hCaptcha/vue-hcaptcha",
   "organization": "hCaptcha",
@@ -8,10 +8,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hCaptcha/vue-hcaptcha.git",
-    "web": "https://github.com/hCaptcha/vue-hcaptcha"
+    "web": "https://github.com/hCaptcha/vue-hcaptcha",
+    "directory": "packages/vue3"
   },
   "bugs": {
     "url": "https://github.com/hCaptcha/vue-hcaptcha/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "main": "./dist/hcaptcha-vue3.umd.js",
   "module": "./dist/hcaptcha-vue3.es.js",
