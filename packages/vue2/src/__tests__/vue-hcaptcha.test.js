@@ -59,9 +59,9 @@ describe('VueHCaptcha', () => {
         wrapper.vm.onExpired();
         expect(wrapper.emitted()['expired']).toBeTruthy();
 
-        expect(wrapper.emitted()['challengeExpired']).toBeFalsy();
+        expect(wrapper.emitted()['challenge-expired']).toBeFalsy();
         wrapper.vm.onChallengeExpired();
-        expect(wrapper.emitted()['challengeExpired']).toBeTruthy();
+        expect(wrapper.emitted()['challenge-expired']).toBeTruthy();
     });
 
     test('reset emits event', async() => {

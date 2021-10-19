@@ -80,7 +80,7 @@ function onSubmit() {
             theme="dark"
             @verify="onVerify"
             @expired="onExpire"
-            @challengeExpired="onExpire"
+            @challenge-expired="onExpire"
             @error="onError"
         />
 

@@ -145,8 +145,6 @@ export default {
             this.$emit('expired');
         },
         onChallengeExpired() {
-            this.$emit('challengeExpired');
-            // vue3 recommends kebab-cased event names
             this.$emit('challenge-expired');
         },
         onOpen() {

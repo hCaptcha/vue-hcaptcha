@@ -5,6 +5,7 @@
     <title>@hcaptcha/vue-hcaptcha demo</title>
     <script src="https://unpkg.com/vue"></script>
     <script src="../../packages/vue2/dist/@hcaptcha/vue-hcaptcha.umd.js"></script>
+<!--    <script src="https://unpkg.com/@hcaptcha/vue-hcaptcha"></script>-->
 </head>
 <body>
     <div id="root">
@@ -12,7 +13,7 @@
                 sitekey="10000000-ffff-ffff-ffff-000000000001"
                 @verify="onVerify"
                 @expired="onExpire"
-                @challengeExpired="onExpire"
+                @challenge-expired="onChallengeExpire"
                 @error="onError"
         ></vue-hcaptcha>
     </div>
@@ -27,7 +28,10 @@
                     console.log('Verified: ', { token, eKey })
                 },
                 onExpire: () => {
-                    console.log('Expired')
+                    console.log('Token expired')
+                },
+                onChallengeExpire: () => {
+                    console.log('Challenge expired')
                 },
                 onError: (err) => {
                     console.log('Error', err)
