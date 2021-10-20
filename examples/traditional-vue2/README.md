@@ -4,10 +4,10 @@ Demo app to showcase usage of the hcaptcha vue web component in a traditional vu
 
 ## Project setup
 ```
-npm install
+yarn
 ```
 
 ### Run demo
 ```
-npm run serve
+yarn serve
 ```

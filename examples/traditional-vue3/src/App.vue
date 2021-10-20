@@ -23,6 +23,13 @@ function onExpire() {
     expired.value = true;
     console.log('Expired');
 }
+function onChallengeExpire() {
+    verified.value = false;
+    token.value = null;
+    eKey.value = null;
+    expired.value = true;
+    console.log('Challenge expired');
+}
 function onError(err) {
     token.value = null;
     eKey.value = null;
@@ -59,6 +66,7 @@ function onSubmit() {
             sitekey="10000000-ffff-ffff-ffff-000000000001"
             @verify="onVerify"
             @expired="onExpire"
+            @challenge-expired="onChallengeExpire"
             @error="onError"
         />
 
@@ -69,6 +77,7 @@ function onSubmit() {
             theme="dark"
             @verify="onVerify"
             @expired="onExpire"
+            @challenge-expired="onChallengeExpire"
             @error="onError"
         />
 

@@ -82,7 +82,7 @@ The component will automatically load the hCaptcha API library and append it to 
 |`error`|`err`|When an error occurs. Component will reset immediately after an error.|
 |`verify`|`token, eKey`|When challenge is completed. The `token` and an `eKey` are passed along.|
 |`expired`|-|When the current token expires.|
-|`challenge-expired`|-|When the unfinished challenge expires.|
+|`challengeExpired`|-|When the unfinished challenge expires.|
 |`opened`|-|When the challenge is opened.|
 |`closed`|-|When the challenge is closed.|
 |`reset`|-|When the challenge is reset.|

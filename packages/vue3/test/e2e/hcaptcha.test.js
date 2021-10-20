@@ -20,9 +20,6 @@ const HTML = `
             <vue-hcaptcha
                     sitekey="10000000-ffff-ffff-ffff-000000000001"
                     @verify="onVerify"
-                    @expired="onExpire"
-                    @challenge-expired="onExpire"
-                    @error="onError"
             ></vue-hcaptcha>
         </div>
         
@@ -33,12 +30,6 @@ const HTML = `
                     onVerify: (token, eKey) => {
                         console.log('Verified: ', {token, eKey});
                         window.onVerify({token, eKey});
-                    },
-                    onExpire: () => {
-                        console.log('Expired')
-                    },
-                    onError: (err) => {
-                        console.log('Error', err)
                     }
                 }
             })
