@@ -145,7 +145,8 @@ export default {
             this.$emit('expired');
         },
         onChallengeExpired() {
-            this.$emit('challenge-expired');
+            // vue3 will transform this `camelCase` event name into `kebab-case`
+            this.$emit('challengeExpired');
         },
         onOpen() {
             this.$emit('opened');

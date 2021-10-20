@@ -22,6 +22,7 @@
             sitekey="10000000-ffff-ffff-ffff-000000000001"
             @verify="onVerify"
             @expired="onExpire"
+            @challengeExpired="onChallengeExpire"
             @error="onError"
         />
 
@@ -32,6 +33,7 @@
             theme="dark"
             @verify="onVerify"
             @expired="onExpire"
+            @challengeExpired="onChallengeExpire"
             @error="onError"
         />
 
@@ -84,6 +86,13 @@ export default {
             this.eKey = null;
             this.expired = true;
             console.log('Expired');
+        },
+        onChallengeExpire() {
+            this.verified = false;
+            this.token = null;
+            this.eKey = null;
+            this.expired = true;
+            console.log(`Challenge expired`);
         },
         onError(err) {
             this.token = null;
