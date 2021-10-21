@@ -142,3 +142,14 @@ To publish a new version, follow the next steps:
 1. Bump the version of the updated package: `vue2/package.json` or `vue3/package.json`
 2. Push changes to master.
    * CI/CD pipeline will publish the new version(s) to: [@hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [@hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
+
+### Contributing + Notable Contributors
+
+`vue-hcaptcha` is developed and maintained through the collective efforts of the hCaptcha community.
+
+This includes developers like you! We welcome your issues, suggestions, and PRs.
+
+Notable contributors for larger changes:
+
+- Vue2 support: hCaptcha team
+- Vue3 support: JDinABox and DSergiu
