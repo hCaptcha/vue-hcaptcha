@@ -76,10 +76,8 @@ export default {
     },
     unmounted() {
         if (this.widgetId) {
-            this.hcaptcha.then(() => {
-                this.hcaptcha.reset(this.widgetId);
-                this.hcaptcha.remove(this.widgetId);
-            });
+            this.hcaptcha.reset(this.widgetId);
+            this.hcaptcha.remove(this.widgetId);
         }
     },
     methods: {
