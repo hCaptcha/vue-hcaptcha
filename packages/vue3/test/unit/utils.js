@@ -1,5 +1,5 @@
-import {mount, shallowMount} from '@vue/test-utils';
-import VueHcaptcha from '../../../vue2/src/hcaptcha.vue';
+import { mount } from '@vue/test-utils';
+import VueHcaptcha from "../../dist/hcaptcha-vue3.es.js";
 
 export const DEBUG_SITE_KEY = '10000000-ffff-ffff-ffff-000000000001';
 
@@ -10,9 +10,9 @@ export function getTestWrapper(
     shallow = false,
     attachTo = document.body
 ) {
-    const mountFn = shallow ? shallowMount : mount;
-    return mountFn(VueHcaptcha, {
-        propsData: props,
+    return mount(VueHcaptcha, {
+        props: props,
+        shallow: shallow,
         attachTo: attachTo
     });
 }

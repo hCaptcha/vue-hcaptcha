@@ -10,7 +10,7 @@ jest.mock('@/hcaptcha-script', () => ({
     loadApiEndpointIfNotAlready: jest.fn(() => Promise.resolve())
 }));
 
-describe('VueHCaptcha', () => {
+describe('Vue2 hCaptcha', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -138,4 +138,13 @@ describe('VueHCaptcha', () => {
             rqdata: props.rqdata
         });
     });
+
+    test('unmounted - should clean up', async() => {
+        expect(wrapper.vm.hcaptcha.reset).not.toHaveBeenCalled();
+        expect(wrapper.vm.hcaptcha.remove).not.toHaveBeenCalled();
+        wrapper.destroy();
+        expect(wrapper.vm.hcaptcha.reset).toHaveBeenCalledTimes(1);
+        expect(wrapper.vm.hcaptcha.remove).toHaveBeenCalledTimes(1);
+    });
+
 });

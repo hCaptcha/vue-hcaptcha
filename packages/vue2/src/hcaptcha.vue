@@ -68,19 +68,26 @@ export default {
     data: () => {
         return {
             widgetId: null,
-            hcaptcha: null
+            hcaptcha: null,
+            renderedCb : null,
         };
     },
     mounted() {
         return loadApiEndpointIfNotAlready(this.$props).then(this.onApiLoaded).catch(this.onError);
     },
     unmounted() {
-        if (this.widgetId) {
-            this.hcaptcha.reset(this.widgetId);
-            this.hcaptcha.remove(this.widgetId);
-        }
+        this.teardown();
+    },
+    destroyed() {
+        this.teardown();
     },
     methods: {
+        teardown() {
+            if (this.widgetId) {
+                this.hcaptcha.reset(this.widgetId);
+                this.hcaptcha.remove(this.widgetId);
+            }
+        },
         onApiLoaded() {
             this.hcaptcha = window.hcaptcha;
             const opt = {
@@ -110,7 +117,11 @@ export default {
                 this.onExecuted();
             } else {
                 // execute after el is rendered
-                this.$on('rendered', this.execute);
+                // we use a custom cb since `$on` was removed in vue3
+                this.renderedCb = () => {
+                    this.renderedCb = null;
+                    this.execute();
+                };
             }
         },
         reset() {
@@ -123,6 +134,7 @@ export default {
         },
         onRendered() {
             this.$emit('rendered');
+            this.renderedCb && this.renderedCb();
         },
         onExecuted() {
             this.$emit('executed');
