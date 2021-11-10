@@ -1,15 +1,10 @@
 import 'regenerator-runtime/runtime';
-import VueHcaptcha from "../../../vue2/src/hcaptcha.vue";
+import VueHcaptcha from "../../dist/hcaptcha-vue3.es.js";
 import { getMockedHcaptcha, MOCK_EKEY, MOCK_TOKEN, MOCK_WIDGET_ID } from "../../../vue2/src/__tests__/hcaptcha.mock.js";
 import { getTestWrapper, DEBUG_SITE_KEY } from "./utils.js";
-import { loadApiEndpointIfNotAlready } from "../../../vue2/src/hcaptcha-script.js";
 import {nextTick} from 'vue';
 
-jest.mock('../../../vue2/src/hcaptcha-script.js', () => ({
-    loadApiEndpointIfNotAlready: jest.fn(() => Promise.resolve())
-}));
-
-describe('VueHCaptcha', () => {
+describe('Vue3 hCaptcha', () => {
     let wrapper;
 
     beforeEach(() => {
@@ -117,10 +112,9 @@ describe('VueHCaptcha', () => {
         });
     });
 
-    test('mounted - loads api endpoint', async() => {
-        const nrCalls = loadApiEndpointIfNotAlready.mock.calls.length;
+    test('mounted - loads api endpoint', async () => {
         wrapper = getTestWrapper();
-        expect(loadApiEndpointIfNotAlready.mock.calls.length).toBe(nrCalls + 1);
+        expect(wrapper.vm.hcaptcha).toBeDefined();
     });
 
     test('rqdata is set upon rendering', async() => {
@@ -136,6 +130,14 @@ describe('VueHCaptcha', () => {
         expect(wrapper.vm.hcaptcha.setData.mock.calls[0][1]).toMatchObject({
             rqdata: props.rqdata
         });
+    });
+
+    test('unmounted - should clean up', async() => {
+        expect(wrapper.vm.hcaptcha.reset).not.toHaveBeenCalled();
+        expect(wrapper.vm.hcaptcha.remove).not.toHaveBeenCalled();
+        wrapper.unmount();
+        expect(wrapper.vm.hcaptcha.reset).toHaveBeenCalledTimes(1);
+        expect(wrapper.vm.hcaptcha.remove).toHaveBeenCalledTimes(1);
     });
 
 });

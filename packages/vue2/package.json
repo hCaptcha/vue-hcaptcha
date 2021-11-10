@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "types": "types/index.d.ts",
   "main": "./dist/@hcaptcha/vue-hcaptcha.umd.min.js",
   "module": "./dist/@hcaptcha/vue-hcaptcha.common.js",
@@ -41,7 +41,7 @@
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-plugin-unit-jest": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
-    "@vue/test-utils": "^1.0.0-beta.27",
+    "@vue/test-utils": "^1.2.2",
     "@yonyou-cloud/eslint-config": "0.0.1",
     "autoprefixer": "^9.1.5",
     "babel-core": "^7.0.0-bridge.0",
