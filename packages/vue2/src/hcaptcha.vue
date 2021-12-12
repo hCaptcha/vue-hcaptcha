@@ -7,7 +7,15 @@ import {loadApiEndpointIfNotAlready} from './hcaptcha-script';
 
 export default {
     name: 'VueHcaptcha',
+    model: {
+      prop: 'value',
+      event: 'verify',
+    },
     props: {
+        value: {
+          type: String,
+          default: undefined,
+        },
         sitekey: {
             type: String,
             required: true
