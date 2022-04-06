@@ -46,7 +46,7 @@ or via script tag (`Vue` must be globally available)
    </template>
    
    <script setup>
-     import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
+     import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
    </script>
    ```
 
