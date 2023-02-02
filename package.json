@@ -26,7 +26,7 @@
     "earn"
   ],
   "scripts": {
-    "setup": "yarn install --frozen-lockfile --prefer-offline --verbose",
+    "setup": "yarn install --frozen-lockfile --prefer-offline",
     "test": "lerna run test --stream",
     "build": "lerna run build --stream",
     "lint": "lerna run lint --stream"

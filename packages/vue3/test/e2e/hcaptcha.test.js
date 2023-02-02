@@ -13,7 +13,7 @@ const HTML = `
   <head>
     <meta charset="utf-8">
     <title>@hcaptcha/vue-hcaptcha demo</title>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script>${hCaptchaVue3}</script>
     <body>
         <div id="root">
@@ -43,7 +43,7 @@ const HTML = `
 const args = [ "--no-sandbox", "--disable-setuid-sandbox" ];
 
 async function waitForFrame(ownerFrame, name, hcaptchaId) {
-    const srcSelector = `[src*='${name}.html${hcaptchaId ? `#id=${hcaptchaId}` : ""}']`;
+    const srcSelector = `[src*='/hcaptcha.html#frame=${name}${hcaptchaId ? `&id=${hcaptchaId}`: ""}']`;
     const elem = await ownerFrame.waitForSelector(
         `iframe${srcSelector}`,
         { state: "attached" }
@@ -91,7 +91,7 @@ describe("hCaptcha vue3", () => {
     it("should get token", async () => {
         const onVerifyMock = jest.fn();
         await page.exposeBinding("onVerify", onVerifyMock);
-        const getRequestPromise = page.waitForRequest("**/getcaptcha*");
+        const getRequestPromise = page.waitForRequest("**/getcaptcha?*");
         const { frame } = await waitForFrame(page, "checkbox");
         const anchor = await frame.$("#anchor");
         await anchor.click();
