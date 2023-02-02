@@ -17,6 +17,8 @@
             <p>{{ error }}</p>
         </div>
 
+        <hr width="100%">
+
         <h3>Normal checkbox (default props)</h3>
         <vue-hcaptcha
             sitekey="10000000-ffff-ffff-ffff-000000000001"
@@ -25,6 +27,8 @@
             @challengeExpired="onChallengeExpire"
             @error="onError"
         />
+
+        <hr width="100%">
 
         <h3>Compact and dark theme checkbox</h3>
         <vue-hcaptcha
@@ -36,6 +40,8 @@
             @challengeExpired="onChallengeExpire"
             @error="onError"
         />
+
+        <hr width="100%">
 
         <h3>Invisible checkbox - triggered programmatically by a button</h3>
         <vue-hcaptcha
@@ -50,8 +56,23 @@
         />
 
         <button @click="onSubmit">
-            Click Here!
+          Click Here!
         </button>
+
+        <hr width="100%">
+
+        <button @click="onAsyncExecute">
+          Async execute
+        </button>
+        <vue-hcaptcha
+            ref="asyncExecuteHCaptcha"
+            sitekey="10000000-ffff-ffff-ffff-000000000001"
+            @verify="onVerify"
+            @expired="onExpire"
+            @challengeExpired="onChallengeExpire"
+            @error="onError"
+        />
+
     </div>
 </template>
 
@@ -103,6 +124,10 @@ export default {
         onSubmit() {
             console.log('Submitting the invisible hCaptcha', this.$refs.invisibleHcaptcha);
             this.$refs.invisibleHcaptcha.execute();
+        },
+        async onAsyncExecute() {
+            const res = await this.$refs.asyncExecuteHCaptcha.executeAsync();
+            console.log("Async execute response", res);
         }
     }
 }

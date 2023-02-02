@@ -17,6 +17,7 @@ describe('Vue3 hCaptcha', () => {
     test('has functions', () => {
         const methods = VueHcaptcha.methods;
         expect(typeof methods.execute).toBe('function');
+        expect(typeof methods.executeAsync).toBe('function');
         expect(typeof methods.reset).toBe('function');
     });
 
@@ -66,20 +67,45 @@ describe('Vue3 hCaptcha', () => {
         expect(wrapper.emitted()['reset']).toBeTruthy();
     });
 
-    test('execute emits event', async() => {
-        expect(wrapper.emitted()['executed']).toBeFalsy();
-        expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(0);
-        wrapper.vm.execute();
-        expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(1);
-        expect(wrapper.emitted()['executed']).toBeTruthy();
+    describe('execute', () => {
+
+        test('emits "executed" event', async() => {
+            expect(wrapper.emitted()['executed']).toBeFalsy();
+            expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(0);
+            wrapper.vm.execute();
+            expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(1);
+            expect(wrapper.emitted()['executed']).toBeTruthy();
+        });
+
+        test('allows calling before rendering', async() => {
+            wrapper = getTestWrapper();
+            wrapper.vm.execute();
+            expect(window.hcaptcha.execute.mock.calls.length).toBe(0);
+            await nextTick();
+            expect(window.hcaptcha.execute.mock.calls.length).toBe(1);
+        });
+
     });
 
-    test('calling execute before rendering', async() => {
-        wrapper = getTestWrapper();
-        wrapper.vm.execute();
-        expect(window.hcaptcha.execute.mock.calls.length).toBe(0);
-        await nextTick();
-        expect(window.hcaptcha.execute.mock.calls.length).toBe(1);
+    describe('executeAsync', () => {
+
+        test('emits "executed" event', async() => {
+            expect(wrapper.emitted()['executed']).toBeFalsy();
+            expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(0);
+            wrapper.vm.executeAsync();
+            expect(wrapper.vm.hcaptcha.execute.mock.calls.length).toBe(1);
+            expect(wrapper.emitted()['executed']).toBeTruthy();
+        });
+
+        test('allows calling before rendering', async() => {
+            wrapper = getTestWrapper();
+            wrapper.vm.executeAsync();
+            expect(window.hcaptcha.execute.mock.calls.length).toBe(0);
+            await nextTick();
+            await nextTick();
+            expect(window.hcaptcha.execute.mock.calls.length).toBe(1);
+        });
+
     });
 
     test('el renders after api loads and a widget id is set', async() => {

@@ -16,6 +16,7 @@ declare class VueHcaptcha extends Vue {
     imghost?: string;
 
     execute(): void;
+    executeAsync(): Promise<{ response: string, key: string }>;
     reset(): void;
 }
 

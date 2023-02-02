@@ -57,44 +57,45 @@ The component will automatically load the hCaptcha API library and append it to 
 
 #### Props
 
-|Name|Values/Type|Required|Default|Description|
-|---|---|---|---|---|
-|`sitekey`|String|**Yes**|`-`|Your sitekey. Please visit [hCaptcha](https://www.hcaptcha.com) and sign up to get a sitekey.|
-|`size`|String (normal, compact, invisible)|No|`normal`|This specifies the "size" of the checkbox. hCaptcha allows you to decide how big the component will appear on render. Defaults to normal.|
-|`theme`|String (light, dark)|No|`light`|hCaptcha supports both a light and dark theme. If no theme is set, the API will default to light.|
-|`tabindex`|Integer|No|`0`|Set the tabindex of the widget and popup. When appropriate, this can make navigation of your site more intuitive.|
-|`language`|String (ISO 639-2 code)|No|`auto`|hCaptcha auto-detects language via the user's browser. This overrides that to set a default UI language.|
-|`reCaptchaCompat`|Boolean|No|`true`|Disable drop-in replacement for reCAPTCHA with `false` to prevent hCaptcha from injecting into window.grecaptcha.|
-|`challengeContainer`|String|No|`-`|A custom element ID to render the hCaptcha challenge.|
-|`rqdata`|String|No|-|See Enterprise docs.|
-|`sentry`|Boolean|No|-|See Enterprise docs.|
-|`apiEndpoint`|String|No|-|See Enterprise docs.|
-|`endpoint`|String|No|-|See Enterprise docs.|
-|`reportapi`|String|No|-|See Enterprise docs.|
-|`assethost`|String|No|-|See Enterprise docs.|
-|`imghost`|String|No|-|See Enterprise docs.|
+| Name                 | Values/Type                         | Required  | Default  | Description                                                                                                                               |
+|----------------------|-------------------------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `sitekey`            | String                              | **Yes**   | `-`      | Your sitekey. Please visit [hCaptcha](https://www.hcaptcha.com) and sign up to get a sitekey.                                             |
+| `size`               | String (normal, compact, invisible) | No        | `normal` | This specifies the "size" of the checkbox. hCaptcha allows you to decide how big the component will appear on render. Defaults to normal. |
+| `theme`              | String (light, dark)                | No        | `light`  | hCaptcha supports both a light and dark theme. If no theme is set, the API will default to light.                                         |
+| `tabindex`           | Integer                             | No        | `0`      | Set the tabindex of the widget and popup. When appropriate, this can make navigation of your site more intuitive.                         |
+| `language`           | String (ISO 639-2 code)             | No        | `auto`   | hCaptcha auto-detects language via the user's browser. This overrides that to set a default UI language.                                  |
+| `reCaptchaCompat`    | Boolean                             | No        | `true`   | Disable drop-in replacement for reCAPTCHA with `false` to prevent hCaptcha from injecting into window.grecaptcha.                         |
+| `challengeContainer` | String                              | No        | `-`      | A custom element ID to render the hCaptcha challenge.                                                                                     |
+| `rqdata`             | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
+| `sentry`             | Boolean                             | No        | -        | See Enterprise docs.                                                                                                                      |
+| `apiEndpoint`        | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
+| `endpoint`           | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
+| `reportapi`          | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
+| `assethost`          | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
+| `imghost`            | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
 
 
 #### Callback Events
 
-|Event|Params|Description|
-|---|---|---|
-|`error`|`err`|When an error occurs. Component will reset immediately after an error.|
-|`verify`|`token, eKey`|When challenge is completed. The `token` and an `eKey` are passed along.|
-|`expired`|-|When the current token expires.|
-|`challengeExpired`|-|When the unfinished challenge expires.|
-|`opened`|-|When the challenge is opened.|
-|`closed`|-|When the challenge is closed.|
-|`reset`|-|When the challenge is reset.|
-|`rendered`|-|When the challenge is rendered.|
-|`executed`|-|When the challenge is executed.|
+| Event              | Params        | Description                                                              |
+|--------------------|---------------|--------------------------------------------------------------------------|
+| `error`            | `err`         | When an error occurs. Component will reset immediately after an error.   |
+| `verify`           | `token, eKey` | When challenge is completed. The `token` and an `eKey` are passed along. |
+| `expired`          | -             | When the current token expires.                                          |
+| `challengeExpired` | -             | When the unfinished challenge expires.                                   |
+| `opened`           | -             | When the challenge is opened.                                            |
+| `closed`           | -             | When the challenge is closed.                                            |
+| `reset`            | -             | When the challenge is reset.                                             |
+| `rendered`         | -             | When the challenge is rendered.                                          |
+| `executed`         | -             | When the challenge is executed.                                          |
 
 ### Methods
 
-|Method|Description|
-|---|---|
-|`execute()`|Programmatically trigger a challenge request|
-|`reset()`|Reset the current challenge|
+| Method           | Description                                      |
+|------------------|--------------------------------------------------|
+| `execute()`      | Programmatically trigger a challenge request     |
+| `executeAsync()` | Similar to `execute` but it returns a `Promise`. |
+| `reset()`        | Reset the current challenge                      |
 
 ### FAQ
 
