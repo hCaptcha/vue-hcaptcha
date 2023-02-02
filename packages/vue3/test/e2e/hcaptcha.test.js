@@ -13,7 +13,7 @@ const HTML = `
   <head>
     <meta charset="utf-8">
     <title>@hcaptcha/vue-hcaptcha demo</title>
-    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script>${hCaptchaVue3}</script>
     <body>
         <div id="root">

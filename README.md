@@ -14,12 +14,12 @@ or via yarn:
 or via script tag (`Vue` must be globally available)
 * vue2
    ```
-   <script src="https://unpkg.com/vue"></script>
+   <script src="https://unpkg.com/vue@2"></script>
    <script src="https://unpkg.com/@hcaptcha/vue-hcaptcha"></script>
    ```
 * vue3
    ```
-   <script src="https://unpkg.com/vue@next"></script>
+   <script src="https://unpkg.com/vue@3"></script>
    <script src="https://unpkg.com/@hcaptcha/vue3-hcaptcha"></script>
    ```
   
