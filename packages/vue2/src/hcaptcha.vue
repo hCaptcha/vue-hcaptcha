@@ -111,6 +111,9 @@ export default {
             }
             this.onRendered();
         },
+        /**
+         * @return {void}
+         */
         execute() {
             if (this.widgetId) {
                 this.hcaptcha.execute(this.widgetId);
@@ -123,6 +126,25 @@ export default {
                     this.execute();
                 };
             }
+        },
+        /**
+         * @return {Promise<string>}
+         */
+        executeAsync() {
+            if (this.widgetId) {
+                this.onExecuted();
+                return this.hcaptcha.execute(this.widgetId, {async: true});
+            }
+            let resolveFn;
+            const promiseFn = new Promise((resolve) => {
+                resolveFn = resolve;
+            });
+            // Execute after el is rendered
+            this.renderedCb = () => {
+                this.renderedCb = null;
+                resolveFn();
+            };
+            return promiseFn.then(this.executeAsync);
         },
         reset() {
             if (this.widgetId) {

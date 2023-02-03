@@ -9,6 +9,7 @@ const token = ref("");
 const eKey = ref("");
 const error = ref("");
 const invisibleHcaptcha = ref(null);
+const asyncExecuteHCaptcha = ref(null);
 
 function onVerify(tokenStr, ekey) {
     verified.value = true;
@@ -40,6 +41,11 @@ function onSubmit() {
     console.log('Submitting the invisible hCaptcha');
     invisibleHcaptcha.value.execute();
 }
+
+async function onAsyncExecute() {
+  const res = await asyncExecuteHCaptcha.value.executeAsync();
+  console.log("Async execute response", res);
+}
 </script>
 
 <template>
@@ -61,6 +67,8 @@ function onSubmit() {
             <p>{{ error }}</p>
         </div>
 
+        <hr width="100%">
+
         <h3>Normal checkbox (default props)</h3>
         <vue-hcaptcha
             sitekey="10000000-ffff-ffff-ffff-000000000001"
@@ -69,6 +77,8 @@ function onSubmit() {
             @challenge-expired="onChallengeExpire"
             @error="onError"
         />
+
+        <hr width="100%">
 
         <h3>Compact and dark theme checkbox</h3>
         <vue-hcaptcha
@@ -80,6 +90,8 @@ function onSubmit() {
             @challenge-expired="onChallengeExpire"
             @error="onError"
         />
+
+        <hr width="100%">
 
         <h3>Invisible checkbox - triggered programmatically by a button</h3>
         <vue-hcaptcha
@@ -96,6 +108,20 @@ function onSubmit() {
         <button @click="onSubmit">
             Click Here!
         </button>
+
+        <hr width="100%">
+
+        <button @click="onAsyncExecute">
+          Async execute
+        </button>
+        <vue-hcaptcha
+            ref="asyncExecuteHCaptcha"
+            sitekey="10000000-ffff-ffff-ffff-000000000001"
+            @verify="onVerify"
+            @expired="onExpire"
+            @challengeExpired="onChallengeExpire"
+            @error="onError"
+        />
     </div>
 </template>
 

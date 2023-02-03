@@ -15,5 +15,6 @@ export function getMockedHcaptcha() {
         reset: jest.fn(),
         remove: jest.fn(),
         execute: jest.fn(),
+        executeAsync: jest.fn(),
     };
 }
