@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue3-hcaptcha",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "hCaptcha team and contributors",
   "homepage": "https://github.com/hCaptcha/vue-hcaptcha",
   "organization": "hCaptcha",
@@ -22,6 +22,7 @@
   "files": [
     "dist"
   ],
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "vite build",
