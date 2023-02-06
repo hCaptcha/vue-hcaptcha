@@ -1,6 +1,6 @@
 {
   "name": "@hcaptcha/vue-hcaptcha",
-  "version": "0.4.0",
+  "version": "1.1.1",
   "types": "types/index.d.ts",
   "main": "./dist/@hcaptcha/vue-hcaptcha.umd.min.js",
   "module": "./dist/@hcaptcha/vue-hcaptcha.common.js",
