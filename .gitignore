@@ -21,3 +21,5 @@ yarn-error.log*
 
 examples/*/*.lock
 coverage
+
+packages/vue3/types/*
