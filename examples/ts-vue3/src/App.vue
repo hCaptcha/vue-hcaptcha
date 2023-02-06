@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import VueHcaptcha from '@hcaptcha/vue3-hcaptcha';
+import VueHcaptcha from "@hcaptcha/vue3-hcaptcha";
 
 const verified = ref(false);
 const expired = ref(false);
