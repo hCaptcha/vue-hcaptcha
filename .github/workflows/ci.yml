@@ -28,6 +28,7 @@ jobs:
       - run: yarn build --stream
       - run: yarn test --stream
       - run: cp README.md packages/vue2 && cp README.md packages/vue3
+      - run: cp -r packages/vue2/types packages/vue3
       - name: "Publish"
         if: contains('refs/heads/master', github.ref)
         run: lerna publish -y from-package

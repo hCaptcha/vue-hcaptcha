@@ -22,6 +22,7 @@
   "files": [
     "dist"
   ],
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "vite build",

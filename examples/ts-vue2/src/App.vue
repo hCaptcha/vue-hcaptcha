@@ -11,9 +11,7 @@
 
 <script lang="ts">
 import {Component, Vue, Ref} from 'vue-property-decorator';
-// import VueHcaptcha from '@hcaptcha/vue-hcaptcha'; // for production
-import VueHcaptcha from '../../../src/hcaptcha'; // for development
-
+import VueHcaptcha from '@hcaptcha/vue-hcaptcha';
 
 @Component({
     components: {
