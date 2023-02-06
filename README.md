@@ -23,7 +23,7 @@ or via script tag (`Vue` must be globally available)
    <script src="https://unpkg.com/@hcaptcha/vue3-hcaptcha"></script>
    ```
   
-#### Basic Usage
+## Basic Usage
 * vue2:
    ```
    <template>
@@ -52,10 +52,9 @@ or via script tag (`Vue` must be globally available)
 
 The component will automatically load the hCaptcha API library and append it to the root component.
 
+## JS API
 
-### JS API
-
-#### Props
+### Props
 
 | Name                 | Values/Type                         | Required  | Default  | Description                                                                                                                               |
 |----------------------|-------------------------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------|
@@ -75,7 +74,7 @@ The component will automatically load the hCaptcha API library and append it to 
 | `imghost`            | String                              | No        | -        | See Enterprise docs.                                                                                                                      |
 
 
-#### Callback Events
+### Callback Events
 
 | Event              | Params        | Description                                                              |
 |--------------------|---------------|--------------------------------------------------------------------------|
@@ -97,21 +96,21 @@ The component will automatically load the hCaptcha API library and append it to 
 | `executeAsync()` | Similar to `execute` but it returns a `Promise`. |
 | `reset()`        | Reset the current challenge                      |
 
-### FAQ
+## FAQ
 
-#### How can I get a sitekey?
+### How can I get a sitekey?
 
 Sign up at [hCaptcha](https://www.hcaptcha.com) to get your sitekey. Check [documentation](https://docs.hcaptcha.com/api#getapikey) for more information.
 
-#### What is hCaptcha?
+### What is hCaptcha?
 
 [hCaptcha](https://www.hcaptcha.com) is a drop-in replacement for reCAPTCHA that earns websites money and helps companies get their data labeled.
 
-#### Are features like bot scores and No-CAPTCHA/passive mode also available?
+### Are features like bot scores and No-CAPTCHA/passive mode also available?
 
 Yes, in the enterprise version: see [hCaptcha Enterprise (BotStop)](https://www.botstop.com) for details.
 
-### Demo
+## Demo
 
 ![Demo](https://raw.githubusercontent.com/hCaptcha/vue-hcaptcha/master/screenshots/demo.gif)
 
@@ -122,29 +121,28 @@ To run the demo:
    * it will start the demo app on localhost:8080
    * open your console to see the demo app emitting events
 
-### TypeScript
+## TypeScript
 
-TypeScript is supported (`types/index.d.ts`), and you can see an example by running `npm run serve:ts`.
+TypeScript is supported. You can see example apps for both `vue2` and `vue3` in `examples` directory.
 
+## Notes for developers
 
-### Notes for developers
-
-#### Scripts
+### Scripts
 
 * `yarn lint` - will check for lint issues
 * `yarn test` - will test both vue2 and vue3 packages
 * `yarn build` - will build the production vue2,3 versions
 
-### Notes for maintainers
+## Notes for maintainers
 
-#### Publishing
+### Publishing
 
 To publish a new version, follow the next steps:
-1. Bump the version of the updated package: `vue2/package.json` or `vue3/package.json`
+1. Bump the versions for both: `vue2/package.json` and `vue3/package.json` (keep them in sync)
 2. Push changes to master.
    * CI/CD pipeline will publish the new version(s) to: [@hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [@hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
 
-### Contributing + Notable Contributors
+## Contributing + Notable Contributors
 
 `vue-hcaptcha` is developed and maintained through the collective efforts of the hCaptcha community.
 
