@@ -139,7 +139,8 @@ TypeScript is supported. You can see example apps for both `vue2` and `vue3` in 
 
 To publish a new version, follow the next steps:
 1. Bump the versions for both: `vue2/package.json` and `vue3/package.json` (keep them in sync)
-2. Push changes to master.
+2. Fill [`CHANGES.md`](./CHANGES.md) with change details
+3. Push changes to master.
    * CI/CD pipeline will publish the new version(s) to: [@hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [@hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
 
 ## Contributing + Notable Contributors
