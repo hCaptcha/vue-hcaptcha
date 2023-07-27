@@ -44,6 +44,10 @@ export default {
             type: Boolean,
             default: true
         },
+        custom: {
+            type: Boolean,
+            default: true
+        },
         apiEndpoint: {
             type: String,
             default: 'https://hcaptcha.com/1/api.js'

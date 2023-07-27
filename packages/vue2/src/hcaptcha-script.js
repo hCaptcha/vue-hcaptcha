@@ -62,6 +62,7 @@ export function getScriptSrc(config) {
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'recaptchacompat', config.reCaptchaCompat === false ? 'off' : null);
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'hl', config.language);
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'sentry', config.sentry);
+    scriptSrc = addQueryParamIfDefined(scriptSrc, 'custom', config.custom);
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'endpoint', config.endpoint);
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'assethost', config.assethost);
     scriptSrc = addQueryParamIfDefined(scriptSrc, 'imghost', config.imghost);
