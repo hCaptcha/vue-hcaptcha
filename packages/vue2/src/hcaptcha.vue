@@ -46,7 +46,7 @@ export default {
         },
         custom: {
             type: Boolean,
-            default: true
+            default: undefined
         },
         apiEndpoint: {
             type: String,
