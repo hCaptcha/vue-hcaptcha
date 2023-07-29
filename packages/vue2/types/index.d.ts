@@ -10,6 +10,7 @@ declare class VueHcaptcha extends Vue {
     challengeContainer?: string;
     rqdata?: string;
     sentry?: boolean;
+    custom?: boolean;
     endpoint?: string;
     reportapi?: string;
     assethost?: string;

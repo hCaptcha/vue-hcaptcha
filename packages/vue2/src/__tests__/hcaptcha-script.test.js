@@ -6,6 +6,7 @@ const config = {
     language: 'ro',
     reCaptchaCompat: true,
     sentry: true,
+    custom: true,
     apiEndpoint: 'https://hcaptcha.com/1/api.js',
     endpoint: 'https://endpoint',
     reportapi: 'https://reportapi',
@@ -52,14 +53,14 @@ describe('hcaptcha-script', () => {
 
     test('script src with custom endpoint', () => {
         expect(getScriptSrc(config))
-            .toBe('https://hcaptcha.com/1/api.js?render=explicit&onload=_hcaptchaOnLoad&hl=ro&sentry=true&endpoint=https%3A%2F%2Fendpoint&assethost=https%3A%2F%2Fassethost&imghost=https%3A%2F%2Fimghost&reportapi=https%3A%2F%2Freportapi');
+            .toBe('https://hcaptcha.com/1/api.js?render=explicit&onload=_hcaptchaOnLoad&hl=ro&sentry=true&custom=true&endpoint=https%3A%2F%2Fendpoint&assethost=https%3A%2F%2Fassethost&imghost=https%3A%2F%2Fimghost&reportapi=https%3A%2F%2Freportapi');
     });
 
     test('script src with reCaptchaCompat off', () => {
         const cfg = Object.assign({}, config);
         cfg.reCaptchaCompat = false;
         expect(getScriptSrc(cfg))
-            .toBe('https://hcaptcha.com/1/api.js?render=explicit&onload=_hcaptchaOnLoad&recaptchacompat=off&hl=ro&sentry=true&endpoint=https%3A%2F%2Fendpoint&assethost=https%3A%2F%2Fassethost&imghost=https%3A%2F%2Fimghost&reportapi=https%3A%2F%2Freportapi');
+            .toBe('https://hcaptcha.com/1/api.js?render=explicit&onload=_hcaptchaOnLoad&recaptchacompat=off&hl=ro&sentry=true&custom=true&endpoint=https%3A%2F%2Fendpoint&assethost=https%3A%2F%2Fassethost&imghost=https%3A%2F%2Fimghost&reportapi=https%3A%2F%2Freportapi');
 
     });
 

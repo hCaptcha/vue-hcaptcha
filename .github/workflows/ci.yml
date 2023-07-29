@@ -23,6 +23,10 @@ jobs:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
           cache: 'yarn'
+
+      - name: Install Lerna
+        run: yarn global add lerna@6
+
       - run: yarn setup
       - run: yarn lint --stream
       - run: yarn build --stream

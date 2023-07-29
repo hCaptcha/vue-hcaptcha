@@ -49,7 +49,8 @@ async function waitForFrame(ownerFrame, name, hcaptchaId) {
         { state: "attached" }
     );
     const frame = await elem.contentFrame();
-    await frame.waitForLoadState();
+    await frame.waitForLoadState("networkidle");
+
     return { elem, frame };
 }
 
@@ -72,10 +73,14 @@ describe("hCaptcha vue3", () => {
 
     beforeEach(async () => {
         page = await browser.newPage({ bypassCSP: true });
+
         setupPage(page);
+
         await page.setViewportSize({ width: 1280, height: 720 });
         await page.route(/https:\/\/hcaptcha\.local/, route => route.fulfill({ body: HTML }));
         await page.goto("https://hcaptcha.local");
+
+        await page.waitForLoadState("networkidle");
     });
 
     afterEach(async () => {
@@ -85,18 +90,22 @@ describe("hCaptcha vue3", () => {
     it("should render anchor", async () => {
         const { frame } = await waitForFrame(page, "checkbox");
         const anchor = await frame.$("#anchor");
+
         expect(await anchor.screenshot()).toMatchImageSnapshot({ failureThreshold: 0.01 });
     });
 
     it("should get token", async () => {
         const onVerifyMock = jest.fn();
         await page.exposeBinding("onVerify", onVerifyMock);
-        const getRequestPromise = page.waitForRequest("**/getcaptcha?*");
+
         const { frame } = await waitForFrame(page, "checkbox");
         const anchor = await frame.$("#anchor");
+
         await anchor.click();
-        await getRequestPromise;
+        await page.waitForRequest("**/getcaptcha?*");
+
         await frame.waitForSelector(".check");
+
         expect(onVerifyMock).toHaveBeenCalledTimes(1);
         expect(onVerifyMock).toHaveBeenCalledWith(expect.anything(), { token: "10000000-aaaa-bbbb-cccc-000000000001", eKey: "" });
         expect(await anchor.screenshot()).toMatchImageSnapshot({ failureThreshold: 0.01 });
