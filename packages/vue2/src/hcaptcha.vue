@@ -7,7 +7,15 @@ import {loadApiEndpointIfNotAlready} from './hcaptcha-script';
 
 export default {
     name: 'VueHcaptcha',
+    model: {
+      prop: 'value',
+      event: 'input',
+    },
     props: {
+        value: {
+          type: String,
+          default: undefined,
+        },
         sitekey: {
             type: String,
             required: true
@@ -176,13 +184,16 @@ export default {
             const token = this.hcaptcha.getResponse(this.widgetId);
             const eKey = this.hcaptcha.getRespKey(this.widgetId);
             this.$emit('verify', token, eKey);
+            this.$emit('input', token);
         },
         onExpired() {
             this.$emit('expired');
+            this.$emit('input', null);
         },
         onChallengeExpired() {
             // vue3 will transform this `camelCase` event name into `kebab-case`
             this.$emit('challengeExpired');
+            this.$emit('input', null);
         },
         onOpen() {
             this.$emit('opened');
