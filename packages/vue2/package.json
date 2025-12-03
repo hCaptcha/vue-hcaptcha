@@ -23,11 +23,11 @@
   },
   "scripts": {
     "test": "npm run test:unit && npm run test:types",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service test:unit",
     "test:types": "tsc -p types/__tests__",
-    "lint": "vue-cli-service lint --no-fix",
-    "lint:fix": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib src/main.js",
+    "lint": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service lint --no-fix",
+    "lint:fix": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service lint",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build --target lib src/main.js",
     "serve": "npm run --prefix examples/traditional-vue2 serve",
     "serve:ts": "npm run --prefix examples/ts-vue2 serve"
   },

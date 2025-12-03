@@ -36,6 +36,8 @@ jobs:
       - run: yarn setup
       - run: yarn lint --stream
       - run: yarn build --stream
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
       - run: yarn test --stream
       - run: cp README.md packages/vue2 && cp README.md packages/vue3
       - run: cp -r packages/vue2/types packages/vue3
