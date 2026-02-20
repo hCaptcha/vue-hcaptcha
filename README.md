@@ -142,7 +142,8 @@ To publish a new version, follow the next steps:
 1. Bump the versions for both: `vue2/package.json` and `vue3/package.json` (keep them in sync)
 2. Fill [`CHANGES.md`](./CHANGES.md) with change details
 3. Push changes to master.
-   * CI/CD pipeline will publish the new version(s) to: [@hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [@hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
+4. Create a [Github Release](https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release) with version from step 1 **without** a prefix such as `v` (e.g. `1.0.3`)
+   * `publish` workflow will be triggered which will: bubuild, test and deploy the package to the [@hcaptcha/vue-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue-hcaptcha) or [@hcaptcha/vue3-hcaptcha](https://www.npmjs.com/package/@hcaptcha/vue3-hcaptcha).
 
 ## Contributing + Notable Contributors
 
