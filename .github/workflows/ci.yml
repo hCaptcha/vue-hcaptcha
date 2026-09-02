@@ -11,6 +11,7 @@ on:
   pull_request:
     branches:
       - master
+
 permissions:
   contents: read
 
@@ -39,10 +40,3 @@ jobs:
         env:
           NODE_OPTIONS: --openssl-legacy-provider
       - run: yarn test --stream
-      - run: cp README.md packages/vue2 && cp README.md packages/vue3
-      - run: cp -r packages/vue2/types packages/vue3
-      - name: "Publish"
-        if: contains('refs/heads/master', github.ref)
-        run: lerna publish -y from-package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
