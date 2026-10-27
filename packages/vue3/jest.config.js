@@ -4,6 +4,7 @@ const e2eConfig = {
 };
 
 const unitConfig = {
+  testEnvironment: "jsdom",
   collectCoverage: true,
   displayName    : "unit",
   testMatch: [
@@ -11,8 +12,7 @@ const unitConfig = {
   ],
   moduleFileExtensions: ['js', 'json', 'vue'],
   transform: {
-    "^.+\\.js$": "babel-jest",
-    "^.+\\.vue$": "vue-jest"
+    "^.+\\.js$": "babel-jest"
   },
   transformIgnorePatterns: [
     "node_modules/(?!(babel-jest)/)"
